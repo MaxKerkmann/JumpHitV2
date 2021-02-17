@@ -29,7 +29,7 @@ public class PlatformSprite extends Circle implements SimpleSprite {
 
         }
 
-        this.resize(32,32);
+
         this.setFill(new ImagePattern(img));
 
 

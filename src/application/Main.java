@@ -71,6 +71,7 @@ public class Main extends Application {
 
 		}
 		sizemulti = getSizeMultiplyer();
+		gamePlayer = new GamePlayer(this);
 	}
 	
 	
@@ -103,7 +104,7 @@ public class Main extends Application {
 	public void stop(){
 		if(gamePlayer.getTimer() != null)
 			gamePlayer.getTimer().stop();
-		Platform.exit();
+
 	}
 	
 	public void addScene(ViewController newSceneController, Scenes scene) {

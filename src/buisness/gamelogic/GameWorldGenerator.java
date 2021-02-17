@@ -43,8 +43,8 @@ public class GameWorldGenerator {
 
     public Frog createFrog(){
         Frog frog = new Frog(main);
-        frog.setY(650);
-        frog.setX(610);
+        frog.setY(650*sizemulti);
+        frog.setX(610*sizemulti);
         return frog;
     }
 
@@ -59,21 +59,21 @@ public class GameWorldGenerator {
             int newPassTime = DatatypeConverter.parseInt(platformXML.getFirstChildElement("passTime").getValue());
             int newPauseTime = DatatypeConverter.parseInt(platformXML.getFirstChildElement("pauseTime").getValue());
             int newDuration = DatatypeConverter.parseInt(platformXML.getFirstChildElement("duration").getValue());
-            Platform platform = new Platform(newNote, newDuration, newPosition, newPassTime, newPauseTime);
+            Platform platform = new Platform(newNote, newDuration, newPosition, newPassTime, newPauseTime,sizemulti);
 
             platform.setY(0);
             switch (newPosition) {
                 case 1:
-                    platform.setX((400));
+                    platform.setX((400*sizemulti));
                     break;
                 case 2:
-                    platform.setX((550));
+                    platform.setX((550*sizemulti));
                     break;
                 case 3:
-                    platform.setX((750));
+                    platform.setX((750*sizemulti));
                     break;
                 case 4:
-                    platform.setX((900));
+                    platform.setX((900*sizemulti));
                     break;
             }
             return platform;

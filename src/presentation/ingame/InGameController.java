@@ -38,6 +38,7 @@ public class InGameController extends ViewController {
     private SoundPlayer soundPlayer;
     private String note;
     private int duration;
+    private double sizemulti;
 
     SimpleObjectProperty currentPlatform;
     SimpleObjectProperty<finishedMode> gameState;
@@ -53,6 +54,7 @@ public class InGameController extends ViewController {
         gameState = player.getGameState();
         gameStarted = player.getGameStarted();
 
+        sizemulti = main.getSizeMultiplyer();
 
         playfield = view.playfield;
         leftBorder = view.leftBorder;
@@ -107,7 +109,7 @@ public class InGameController extends ViewController {
             public void changed(ObservableValue<? extends GameObject> observable, GameObject oldValue, GameObject newValue) {
 
                 PlatformSprite pSprite = new PlatformSprite(main.getSelectedWorld());
-                pSprite.setRadius(64);
+                pSprite.setRadius(64*sizemulti);
                 pSprite.gameObjectProperty().set(newValue);
                 player.addToSprites(pSprite);
                 playfield.getChildren().add(pSprite);
@@ -121,7 +123,7 @@ public class InGameController extends ViewController {
                 if (newValue == finishedMode.PLAYING) {
                     view.getChildren().remove(view.getChildren().size()-1);
                 } else{
-                    Rectangle cover = new Rectangle(1280, 720);
+                    Rectangle cover = new Rectangle(1280*sizemulti, 720*sizemulti);
                     cover.setFill(Color.GRAY);
                     cover.setOpacity(0.5);
                     view.getChildren().add(cover);
@@ -136,8 +138,8 @@ public class InGameController extends ViewController {
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(newValue){
                     frogSprite = new FrogSprite(main);
-                    frogSprite.setHeight(64);
-                    frogSprite.setWidth(64);
+                    frogSprite.setHeight(64*sizemulti);
+                    frogSprite.setWidth(64*sizemulti);
                     frogSprite.gameObjectProperty().setValue(player.getFrog());
                     player.addToSprites(frogSprite);
                     playfield.getChildren().add(frogSprite);
@@ -165,6 +167,10 @@ public class InGameController extends ViewController {
 
     @Override
     public void initialize() {
+
+        safetyBird.setHeight(100*sizemulti);
+        safetyBird.setWidth(700*sizemulti);
+
         int worldNumber = main.getSelectedWorld();
         Image img = null;
         try {

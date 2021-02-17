@@ -14,7 +14,7 @@ public class GameBreakView extends VBox {
     Rectangle animation;
 
     public GameBreakView(){
-        animation = new Rectangle(400,400);
+        animation = new Rectangle();
         levelSelection = new Button();
         repeatLevel = new Button();
         nextLevel = new Button();
@@ -23,6 +23,7 @@ public class GameBreakView extends VBox {
         bottom.setSpacing(20);
         bottom.getChildren().addAll(levelSelection,repeatLevel,nextLevel);
         bottom.setAlignment(Pos.CENTER);
+        this.setAlignment(Pos.CENTER);
         this.setPadding(new Insets(15));
         this.getChildren().addAll(animation,bottom);
 

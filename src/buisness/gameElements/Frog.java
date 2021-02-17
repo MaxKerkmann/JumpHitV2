@@ -56,31 +56,31 @@ public class Frog implements GameObject {
     public void update(double multi) {
 
         if(currentPlatform != null){
-            double vektorX = (currentPlatform.getX()-32) - x;
-            double vektorY = (currentPlatform.getY()-42) - y;
+            double vektorX = (currentPlatform.getX()-32*sizemulti) - x;
+            double vektorY = (currentPlatform.getY()-42*sizemulti) - y;
             if(jumpActive.get()) {
                 vektorX = Math.sqrt(vektorX*vektorX);
                 vektorY = Math.sqrt(vektorY*vektorY);
-                if(vektorX < 30 && vektorY < 30){
+                if(vektorX < 30*sizemulti && vektorY < 30*sizemulti){
                     jumpActive.set(false);
                 }else{
-                     vektorX = (currentPlatform.getX()-32) - x;
-                     vektorY = (currentPlatform.getY()-42) - y;
+                     vektorX = (currentPlatform.getX()-32*sizemulti) - x;
+                     vektorY = (currentPlatform.getY()-42*sizemulti) - y;
                     if(vektorX > 0)
-                        x = x + 15;
+                        x = x + 15*sizemulti;
                     else
-                        x = x - 15;
+                        x = x - 15*sizemulti;
                     if(vektorY > 0)
-                        y = y +15;
+                        y = y +15*sizemulti;
                     else
-                        y = y -15;
+                        y = y -15*sizemulti;
                 }
             }else{
-                if (currentPlatform.getY() >= 660)
+                if (currentPlatform.getY() >= 660*sizemulti)
                     currentPlatform = null;
                 else {
-                    x = currentPlatform.getX() - 32;
-                    y = currentPlatform.getY() - 42;
+                    x = currentPlatform.getX() - 32*sizemulti;
+                    y = currentPlatform.getY() - 42*sizemulti;
                 }
             }
         }

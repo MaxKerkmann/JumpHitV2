@@ -30,6 +30,7 @@ public class GameBreakController extends ViewController {
     private GameBreakView view;
     private Stage stage;
     private InGameView gameView;
+    private double sizemulti;
 
     public GameBreakController(Main main, InGameView gameView){
         this.main = main;
@@ -40,6 +41,8 @@ public class GameBreakController extends ViewController {
         nextLevel = view.nextLevel;
         animation = view.animation;
 
+        sizemulti = main.getSizeMultiplyer();
+
         rootView = view;
 
         initialize();
@@ -48,6 +51,8 @@ public class GameBreakController extends ViewController {
     @Override
     public void initialize() {
 
+        animation.setWidth(400*sizemulti);
+        animation.setHeight(400*sizemulti);
 
         repeatLevel.getStyleClass().addAll("button-Style");
 
@@ -62,18 +67,18 @@ public class GameBreakController extends ViewController {
         try {
             ImageView repeatLevelview = new ImageView(
                     new Image(new FileInputStream(String.format("%s/%s.png", "ressources/game/window", "repeat"))));
-            repeatLevelview.setFitHeight(40);
-            repeatLevelview.setFitWidth(40);
+            repeatLevelview.setFitHeight(40*sizemulti);
+            repeatLevelview.setFitWidth(40*sizemulti);
             repeatLevel.setGraphic(repeatLevelview);
             ImageView levelSelectionview = new ImageView(
                     new Image(new FileInputStream(String.format("%s/%s.png", "ressources/game/window", "level"))));
-            levelSelectionview.setFitHeight(40);
-            levelSelectionview.setFitWidth(40);
+            levelSelectionview.setFitHeight(40*sizemulti);
+            levelSelectionview.setFitWidth(40*sizemulti);
             levelSelection.setGraphic(levelSelectionview);
             ImageView nextLevelview = new ImageView(
                     new Image(new FileInputStream(String.format("%s/%s.png", "ressources/game/window", "nextlevel"))));
-            nextLevelview.setFitHeight(40);
-            nextLevelview.setFitWidth(40);
+            nextLevelview.setFitHeight(40*sizemulti);
+            nextLevelview.setFitWidth(40*sizemulti);
             nextLevel.setGraphic(nextLevelview);
 
 
@@ -159,7 +164,7 @@ public class GameBreakController extends ViewController {
         stage.setAlwaysOnTop(true);
         stage.initStyle(StageStyle.UNDECORATED);
         this.stage = stage;
-        Scene newScene = new Scene(this.getRootView());
+        Scene newScene = new Scene(this.getRootView(),430*sizemulti,500*sizemulti);
         stage.setScene(newScene);
 
         stage.show();

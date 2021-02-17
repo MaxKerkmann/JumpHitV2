@@ -1,5 +1,6 @@
 package buisness.gameElements;
 
+import application.Main;
 import buisness.gamelogic.GameObject;
 
 
@@ -18,18 +19,21 @@ public class Platform implements GameObject {
     private double y;
     private int rotation;
 
-    public Platform(String note,int duration, int position, int passTime, double pauseTime){
+    private double sizemulti;
+
+    public Platform(String note, int duration, int position, int passTime, double pauseTime, double sizemulti){
         this.note = note;
         this.duration = duration;
         this.position = position;
         this.pauseTime = pauseTime;
         this.passTime = passTime;
+        this.sizemulti = sizemulti;
         fallingSpeed = calculateFallingSpeed();
 
     }
 
     private double calculateFallingSpeed(){
-        double speed = 1280.0*(1000.0/passTime);
+        double speed = (1280.0*sizemulti)*(1000.0/passTime);
         return speed;
 //        return 200;
     }

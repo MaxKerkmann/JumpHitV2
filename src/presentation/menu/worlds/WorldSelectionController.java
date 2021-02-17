@@ -47,7 +47,7 @@ public class WorldSelectionController extends ViewController {
 	public void initialize() {
 		
 		title.setText("Welten");
-		close.getRootView().setPadding(new Insets(1,1,1,1000));
+		close.getRootView().setPadding(new Insets(1,1,1,1000* main.getSizeMultiplyer()));
 		HBox top = new HBox();
 		HBox topright = new HBox();
 		topright.getChildren().add(close.getRootView());

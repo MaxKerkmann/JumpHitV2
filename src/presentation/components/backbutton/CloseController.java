@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import presentation.ViewController;
 
 import java.io.FileInputStream;
@@ -42,7 +43,7 @@ public class CloseController extends ViewController {
         }
 
         close.addEventHandler(ActionEvent.ACTION, event -> {
-           main.getPrimaryStage().close();
+            main.getPrimaryStage().close();
         });
     }
 }

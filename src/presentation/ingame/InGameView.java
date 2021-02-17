@@ -24,7 +24,7 @@ public class InGameView extends StackPane {
         playfield = new Pane();
 
 
-        safetyBird = new Rectangle(700,100);
+        safetyBird = new Rectangle();
 
         HBox bottom = new HBox();
 

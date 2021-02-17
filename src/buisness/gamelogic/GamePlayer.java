@@ -29,12 +29,14 @@ public class GamePlayer {
     private String currentSoundFile;
     private Frog frog;
     private boolean wasStartedBefore;
+    private double sizemulti;
 
     public GamePlayer(Main main){
         gameStarted = new SimpleBooleanProperty();
         currentPlatform = new SimpleObjectProperty();
         gameState = new SimpleObjectProperty<finishedMode>();
         this.main = main;
+        sizemulti = main.getSizeMultiplyer();
 
         //Listener der drauf hört ob sich der Spielstatus ändert: Zum Beispiel auf von "Spiel läuft" auf "Verloren"
         gameState.addListener(new ChangeListener<finishedMode>() {
@@ -67,7 +69,7 @@ public class GamePlayer {
 
         currentSoundFile = soundFile;
         index = 1;
-        gameWorld = new GameWorld();
+        gameWorld = new GameWorld(main);
         gameWorldGenerator = new GameWorldGenerator(main);
         gameWorldGenerator.setCurrentSoundFile(soundFile);
 
@@ -117,7 +119,7 @@ public class GamePlayer {
                 ArrayList<SimpleSprite> spritesToDel = new ArrayList<>();
                 for (SimpleSprite sprite : sprites) { // Führt für alle Sprites die render-Methode aus
                     sprite.render();
-                    if(sprite.getYCoord()>800)//Löscht nicht mehr zu sehende Sprites aus der Update-Liste
+                    if(sprite.getYCoord()>800*sizemulti)//Löscht nicht mehr zu sehende Sprites aus der Update-Liste
                         spritesToDel.add(sprite);
                 }
                 for(SimpleSprite sprite : spritesToDel){

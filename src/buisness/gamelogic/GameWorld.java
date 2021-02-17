@@ -1,5 +1,6 @@
 package buisness.gamelogic;
 
+import application.Main;
 import buisness.gameElements.Platform;
 import buisness.gamelogic.GameObject;
 
@@ -8,6 +9,11 @@ import java.util.ArrayList;
 //Verwaltung der einzelen GameObjekte
 public class GameWorld {
     private ArrayList<GameObject> gameObjects = new ArrayList<>();
+    private double sizemulti;
+
+    public GameWorld(Main main){
+        sizemulti = main.getSizeMultiplyer();
+    }
 
     public void add(GameObject object) {
         gameObjects.add(object);
@@ -33,12 +39,13 @@ public class GameWorld {
 
             if (gameObject instanceof Platform) {
                 Platform temp = (Platform) gameObject;
-                if (gameObject.getY() > 780 && !temp.getClicked()) {
+                if (gameObject.getY() > 780*sizemulti && !temp.getClicked()) {
                     gameFinished = finishedMode.LOST;
-                } else if (gameObject.getY() < 780) {
+                    couldWin = false;
+                } else if (gameObject.getY() < 780*sizemulti) {
                     couldWin = false;
                 }
-                if (gameObject.getY() > 780 && temp.getClicked()) {
+                if (gameObject.getY() > 780*sizemulti && temp.getClicked()) {
                     remove(i);
                 }
             }
