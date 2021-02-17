@@ -3,25 +3,25 @@ package application;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import buisness.gamelogic.GamePlayer;
-import buisness.gamelogic.SoundPlayer;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.jfugue.player.Player;
+
 import presentation.ViewController;
 import presentation.menu.start.StartscreenController;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-import javax.swing.text.View;
+
 
 
 public class Main extends Application {
