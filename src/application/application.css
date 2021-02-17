@@ -1,0 +1,85 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+/* . steht für Klasse -> koennen mehrere zugehoeren */
+.button-Style-start {
+    -fx-padding: 5;
+    -fx-font-size: 38;
+    -fx-pref-height: 100;
+    -fx-pref-width: 220;
+    -fx-font-family: Arial;
+
+    -fx-background-color: FF3;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.8) , 5, 0.0 , 0 , 2 );
+}
+
+.button-Style-start:hover{
+	  -fx-background-color: F93;
+	  -fx-font-family: Arial;
+	  -fx-font-weight: bold;
+}
+
+.button-Style-worldSelection{
+    -fx-padding: 5;
+
+    -fx-background-color: #0e0a43;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.8) , 5, 0.0 , 0 , 2 );
+}
+
+.button-Style-worldSelection:hover{
+	  -fx-background-color: FF3;
+	  -fx-background-radius: 6, 5;
+      -fx-background-insets: 0, 1;
+      -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.8) , 5, 0.0 , 0 , 2 );
+}
+
+.button-Style {
+    -fx-padding: 5;
+    -fx-border-style: none;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent;
+    -fx-font-size: 15
+}
+
+.window-Style{
+	 -fx-padding: 140;
+     -fx-pref-height: 720;
+	 -fx-pref-width: 1280;
+	 -fx-background-color: blue;
+}
+
+
+
+/* # ab hier alle ID's */
+#startscreen{
+    -fx-background-image: url("../../../../ressources/menus/StartMenu/startseite.png");
+}
+
+#worldSelection{
+    -fx-background-image: url("../../../../ressources/menus/StartMenu/weltenuebersicht_wiese.png");
+}
+
+#info{
+    -fx-background-image: url("../../../../ressources/menus/StartMenu/info.png");
+}
+
+#back-button{
+    -fx-background-image: url("../../../../ressources/menus/StartMenu/back-button.png");
+    -fx-pref-height: 60;
+    -fx-pref-width: 60;
+}
+
+#back-button:hover{
+    -fx-background-image: url("../../../../ressources/menus/StartMenu/back-button-hover.png");
+}
+
+
+.gameWindow-Style{
+     -fx-pref-height: 720;
+	 -fx-pref-width: 1280;
+}
+

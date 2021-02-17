@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="jilt">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/IdeaProjects/EIBO_JumpHit/Libraries/jilt.jar!/" />
+      <root url="jar://$USER_HOME$/IdeaProjects/EIBO_JumpHit/Libraries/slf4j-api-2.0.99.jar!/" />
+      <root url="jar://$USER_HOME$/IdeaProjects/EIBO_JumpHit/Libraries/slf4j-nop-1.7.25.jar!/" />
+      <root url="jar://$USER_HOME$/IdeaProjects/EIBO_JumpHit/Libraries/slf4j-simple-1.6.99.jar!/" />
+      <root url="jar://$USER_HOME$/IdeaProjects/EIBO_JumpHit/Libraries/sms.jar!/" />
+      <root url="jar://$USER_HOME$/IdeaProjects/EIBO_JumpHit/Libraries/xom-1.3.5.jar!/" />
+      <root url="jar://$USER_HOME$/IdeaProjects/EIBO_JumpHit/Libraries/jbox2d-library-2.1.2.1-SNAPSHOT.jar!/" />
+      <root url="jar://$USER_HOME$/IdeaProjects/EIBO_JumpHit/Libraries/core.jar!/" />
+      <root url="jar://$USER_HOME$/IdeaProjects/EIBO_JumpHit/Libraries/JBox2D-2.0.1-b250-Full.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/IdeaProjects/EIBO_JumpHit/Libraries/JBox2D-2.0.1-b250-Full.jar!/org/jbox2d/p5/doc" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/IdeaProjects/EIBO_JumpHit/Libraries/JBox2D-2.0.1-b250-Full.jar!/" />
+    </SOURCES>
+  </library>
+</component>
