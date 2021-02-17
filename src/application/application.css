@@ -46,9 +46,7 @@
 }
 
 .window-Style{
-	 -fx-padding: 140;
-     -fx-pref-height: 720;
-	 -fx-pref-width: 1280;
+	 -fx-padding: 20;
 	 -fx-background-color: blue;
 }
 

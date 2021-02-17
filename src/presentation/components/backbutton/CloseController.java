@@ -4,19 +4,23 @@ import application.Main;
 import application.Main.Scenes;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import presentation.ViewController;
+
+import java.io.FileInputStream;
 
 
 public class CloseController extends ViewController {
 
-    private Button back;
-    private BackButtonView view;
+    private Button close;
+    private CloseView view;
     private Main main;
 
     public CloseController(Main main) {
-        view = new BackButtonView();
+        view = new CloseView();
         this.main = main;
-        back = view.back;
+        close = view.close;
 
         rootView = view;
 
@@ -26,15 +30,19 @@ public class CloseController extends ViewController {
     @Override
     public void initialize() {
 
-        back.addEventHandler(ActionEvent.ACTION, event -> {
+        close.getStyleClass().addAll("button-Style");
+        try {
+            ImageView closeview = new ImageView(
+                    new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/icons", "close"))));
+            closeview.setFitHeight(40);
+            closeview.setFitWidth(40);
+            close.setGraphic(closeview);
+        }catch (Exception e){
 
-            if (main.getLastScene() == Scenes.LEVELMENU) {
-                main.setLastScene(application.Main.Scenes.STARTSCENE);
-                main.switchScene(application.Main.Scenes.WORLDMENU);
-            } else {
-                main.setLastScene(application.Main.Scenes.WORLDMENU);
-                main.switchScene(application.Main.Scenes.STARTSCENE);
-            }
+        }
+
+        close.addEventHandler(ActionEvent.ACTION, event -> {
+           main.getPrimaryStage().close();
         });
     }
 }

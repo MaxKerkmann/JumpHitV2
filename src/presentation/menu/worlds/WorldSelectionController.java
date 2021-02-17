@@ -2,6 +2,8 @@ package presentation.menu.worlds;
 
 import application.Main;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -9,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import presentation.ViewController;
 import presentation.components.backbutton.BackButtonController;
+import presentation.components.backbutton.CloseController;
 import presentation.menu.levels.LevelSelectionController;
 
 import java.io.FileInputStream;
@@ -19,6 +22,7 @@ public class WorldSelectionController extends ViewController {
 	private Button world3;
 	private Label title;
 	private BackButtonController back;
+	private CloseController close;
 	private WorldSelectionView view;
 
 	
@@ -28,6 +32,7 @@ public class WorldSelectionController extends ViewController {
 		view = new WorldSelectionView();
 		this.main = main;
 		back = new BackButtonController(main);
+		close = new CloseController(main);
 		
 		world1 = view.buttonToWorld1;
 		world2 = view.buttonToWorld2;
@@ -42,9 +47,12 @@ public class WorldSelectionController extends ViewController {
 	public void initialize() {
 		
 		title.setText("Welten");
-		
+		close.getRootView().setPadding(new Insets(1,1,1,1000));
 		HBox top = new HBox();
-		top.getChildren().addAll(back.getRootView(), title);
+		HBox topright = new HBox();
+		topright.getChildren().add(close.getRootView());
+		topright.setAlignment(Pos.CENTER_RIGHT);
+		top.getChildren().addAll(back.getRootView(), title,topright);
 		view.setTop(top);
 
 		try {

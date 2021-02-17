@@ -1,14 +1,15 @@
 package presentation.components.backbutton;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 public class CloseView extends VBox {
 
-    Button back;
+    Button close;
     public CloseView() {
-        back = new Button();
-        back.setId("back-button");
-        this.getChildren().add(back);
+        close = new Button();
+        this.setAlignment(Pos.CENTER_RIGHT);
+        this.getChildren().add(close);
     }
 }

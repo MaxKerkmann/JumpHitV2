@@ -1,5 +1,6 @@
 package presentation.menu.start;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -15,7 +16,8 @@ public class StartscreenView extends BorderPane {
 
 		VBox buttons = new VBox();
 		buttons.getChildren().addAll(startButton,infoButton);
-		buttons.setAlignment(Pos.BOTTOM_CENTER);
+		buttons.setAlignment(Pos.CENTER);
+		buttons.setPadding(new Insets(200,1,1,1));
 		buttons.setSpacing(30);
 		startButton.getStyleClass().add("button-Style-start");
 		infoButton.getStyleClass().add("button-Style-start");

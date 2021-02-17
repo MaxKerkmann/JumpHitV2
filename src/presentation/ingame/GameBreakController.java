@@ -156,6 +156,7 @@ public class GameBreakController extends ViewController {
 
     public void showStage() {
         Stage stage = new Stage();
+        stage.setAlwaysOnTop(true);
         stage.initStyle(StageStyle.UNDECORATED);
         this.stage = stage;
         Scene newScene = new Scene(this.getRootView());

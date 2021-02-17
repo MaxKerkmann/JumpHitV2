@@ -30,11 +30,11 @@ public class GamePlayer {
     private Frog frog;
     private boolean wasStartedBefore;
 
-    public GamePlayer(){
+    public GamePlayer(Main main){
         gameStarted = new SimpleBooleanProperty();
         currentPlatform = new SimpleObjectProperty();
         gameState = new SimpleObjectProperty<finishedMode>();
-
+        this.main = main;
 
         //Listener der drauf hört ob sich der Spielstatus ändert: Zum Beispiel auf von "Spiel läuft" auf "Verloren"
         gameState.addListener(new ChangeListener<finishedMode>() {
@@ -68,7 +68,7 @@ public class GamePlayer {
         currentSoundFile = soundFile;
         index = 1;
         gameWorld = new GameWorld();
-        gameWorldGenerator = new GameWorldGenerator();
+        gameWorldGenerator = new GameWorldGenerator(main);
         gameWorldGenerator.setCurrentSoundFile(soundFile);
 
         frog = gameWorldGenerator.createFrog();

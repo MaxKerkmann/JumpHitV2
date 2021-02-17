@@ -2,11 +2,14 @@ package presentation.menu.levels;
 
 import application.Main;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import presentation.ViewController;
 import presentation.components.backbutton.BackButtonController;
+import presentation.components.backbutton.CloseController;
 import presentation.ingame.InGameController;
 
 public class LevelSelectionController extends ViewController {
@@ -16,6 +19,7 @@ public class LevelSelectionController extends ViewController {
 	private Button level3;
 	private Label title;
 	private BackButtonController back;
+	private CloseController close;
 	private LevelSelectionView view;
 	
 	private Main main;
@@ -24,6 +28,7 @@ public class LevelSelectionController extends ViewController {
 		this.main = main;
 		view = new LevelSelectionView();
 		back = new BackButtonController(main);
+		close = new CloseController(main);
 		
 		level1 = view.level1;
 		level2 = view.level2;
@@ -38,9 +43,13 @@ public class LevelSelectionController extends ViewController {
 	public void initialize() {
 		
 		title.setText("Level");
-		
+
+		close.getRootView().setPadding(new Insets(1,1,1,1000));
 		HBox top = new HBox();
-		top.getChildren().addAll(back.getRootView(), title);
+		HBox topright = new HBox();
+		topright.getChildren().add(close.getRootView());
+		topright.setAlignment(Pos.CENTER_RIGHT);
+		top.getChildren().addAll(back.getRootView(), title,topright);
 		view.setTop(top);
 		level1.setText("Level 1");
 		level2.setText("Level 2");

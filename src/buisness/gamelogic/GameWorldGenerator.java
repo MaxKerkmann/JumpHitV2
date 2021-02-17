@@ -1,6 +1,7 @@
 package buisness.gamelogic;
 
 
+import application.Main;
 import buisness.gameElements.Frog;
 import buisness.gameElements.Platform;
 import nu.xom.*;
@@ -15,10 +16,16 @@ public class GameWorldGenerator {
     private String soundFile;
     private File file;
     private Builder builder;
-    private Document doc;
+    private nu.xom.Document doc;
     private Element root;
-    Elements platforms;
+    private nu.xom.Elements platforms;
+    private Main main;
+    private double sizemulti;
 
+    public GameWorldGenerator(Main main){
+        this.main = main;
+        sizemulti = main.getSizeMultiplyer();
+    }
     //Setzt zu ladene SoundFile
     public void setCurrentSoundFile(String soundFile){
         this.soundFile = soundFile;
@@ -35,9 +42,9 @@ public class GameWorldGenerator {
     }
 
     public Frog createFrog(){
-        Frog frog = new Frog();
-        frog.setY(800);
-        frog.setX(600);
+        Frog frog = new Frog(main);
+        frog.setY(650);
+        frog.setX(610);
         return frog;
     }
 

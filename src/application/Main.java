@@ -34,11 +34,11 @@ public class Main extends Application {
 	private Stage primaryStage;
 	private Map<Scenes, Pane> scenes;
 	private Scenes lastScene;
-	private GamePlayer gamePlayer = new GamePlayer();
-	private AnimationTimer timer;
+	private GamePlayer gamePlayer = new GamePlayer(this);
 	private int selectedWorld;
 	private int size;
 	private int currentLevel;
+	private double sizemulti;
 	
 	
 	public void init() {
@@ -70,6 +70,7 @@ public class Main extends Application {
 		} catch (IOException e) {
 
 		}
+		sizemulti = getSizeMultiplyer();
 	}
 	
 	
@@ -81,7 +82,7 @@ public class Main extends Application {
 			primaryStage.initStyle(StageStyle.UNDECORATED);
 			BorderPane root = new BorderPane();
 
-			Scene scene = new Scene(root);
+			Scene scene = new Scene(root,1280*sizemulti,720*sizemulti);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 			primaryStage.setScene(scene);
@@ -151,10 +152,6 @@ public class Main extends Application {
 		return lastScene;
 	}
 
-	public void setTimer(AnimationTimer timer){
-		this.timer = timer;
-	}
-
 	public int getSelectedWorld(){
 		return selectedWorld;
 	}
@@ -163,18 +160,30 @@ public class Main extends Application {
 		selectedWorld = newWorld;
 	}
 
-	public int getSize(){
-		return size;
+	public double getSizeMultiplyer () {
+		switch (size) {
+			case 1:
+				return (2.0 / 3.0);
+			case 3:
+				return (3.0 / 2.0);
+			default:
+				return 1;
+		}
 	}
 
 	public void setSize(int size){
 		this.size = size;
 	}
+
 	public int getCurrentLevel(){
 		return currentLevel;
 	}
 
 	public void setCurrentLevel(int currentLevel){
 		this.currentLevel = currentLevel;
+	}
+
+	public Stage getPrimaryStage(){
+		return primaryStage;
 	}
 }

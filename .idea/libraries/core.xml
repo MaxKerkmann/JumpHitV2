@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="core">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Libraries/core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libraries/jbox2d-library-2.1.2.1-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libraries/jfugue-5.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libraries/jilt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libraries/slf4j-api-2.0.99.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libraries/slf4j-nop-1.7.25.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libraries/slf4j-simple-1.6.99.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libraries/sms.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libraries/xom-1.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libraries/JBox2D-2.0.1-b250-Full.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/Libraries/JBox2D-2.0.1-b250-Full.jar!/org/jbox2d/p5/doc" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/Libraries/JBox2D-2.0.1-b250-Full.jar!/" />
+    </SOURCES>
+  </library>
+</component>

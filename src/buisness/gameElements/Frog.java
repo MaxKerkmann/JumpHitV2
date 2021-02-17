@@ -1,5 +1,6 @@
 package buisness.gameElements;
 
+import application.Main;
 import buisness.gamelogic.GameObject;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
@@ -20,10 +21,12 @@ public class Frog implements GameObject {
     private double x;
     private double y;
     private double rotation;
+    private double sizemulti;
 
-    public Frog(){
+    public Frog(Main main){
         jumpActive = new SimpleBooleanProperty();
         jumpActive.set(false);
+        sizemulti = main.getSizeMultiplyer();
     }
 
     public void setX(double x) {
@@ -64,13 +67,13 @@ public class Frog implements GameObject {
                      vektorX = (currentPlatform.getX()-32) - x;
                      vektorY = (currentPlatform.getY()-42) - y;
                     if(vektorX > 0)
-                        x = x + 20;
+                        x = x + 15;
                     else
-                        x = x - 20;
+                        x = x - 15;
                     if(vektorY > 0)
-                        y = y +20;
+                        y = y +15;
                     else
-                        y = y -20;
+                        y = y -15;
                 }
             }else{
                 if (currentPlatform.getY() >= 660)
