@@ -79,17 +79,21 @@ public class ResizeController extends ViewController {
                         while ((currentline = reader.readLine()) != null) {
                             lines.add(currentline);
                         }
-                        //lines.
+                        String edit = lines.get(0);
+                        edit = edit.split(":")[0] + ":" + size;
+                        lines.remove(0);
                         writer = new BufferedWriter(new FileWriter("configV2.txt"));
+                        writer.write(edit);
+                        writer.newLine();
                         for(String newline : lines){
                             writer.write(newline);
                         }
-
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     try {
+                        writer.close();
                         reader.close();
                     } catch (IOException e) {
 
