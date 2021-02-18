@@ -19,6 +19,10 @@ public class FrogSprite extends Rectangle implements SimpleSprite {
     private Image img = null;
     private double sizemulti;
 
+    private final int baseSpriteSize=64;
+    private final int baseJumpingSpriteHeigth = 128;
+    private final int baseJumpingSpriteWidth = 96;
+
     public FrogSprite(Main main){
         sizemulti = main.getSizeMultiplyer();
         gameObject = new SimpleObjectProperty<>();
@@ -68,12 +72,12 @@ public class FrogSprite extends Rectangle implements SimpleSprite {
 
     private void setImage(ImagePattern imgPattern,Boolean jumping){
         if(jumping) {
-            this.setHeight(128*sizemulti);
-            this.setWidth(96*sizemulti);
+            this.setHeight(baseJumpingSpriteHeigth*sizemulti);
+            this.setWidth(baseJumpingSpriteWidth*sizemulti);
         }
         else{
-            this.setHeight(64*sizemulti);
-            this.setWidth(64*sizemulti);
+            this.setHeight(baseSpriteSize*sizemulti);
+            this.setWidth(baseSpriteSize*sizemulti);
         }
         this.setFill(imgPattern);
     }

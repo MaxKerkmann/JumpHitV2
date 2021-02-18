@@ -31,14 +31,20 @@ public class GameBreakController extends ViewController {
     private GameBreakView view;
     private Stage stage;
     private InGameView gameView;
+
+    private final int endAnimationSize = 350;
+    private final int baseIconSize = 40;
+    private final int baseStageHeigth = 500;
+    private final int baseStageWidth = 430;
+
     private double sizemulti;
 
-    public GameBreakController(Main main, InGameView gameView){
+    public GameBreakController(Main main, InGameView gameView) {
         this.main = main;
         view = new GameBreakView();
         this.gameView = gameView;
         levelSelection = view.levelSelection;
-        repeatLevel =view.repeatLevel;
+        repeatLevel = view.repeatLevel;
         nextLevel = view.nextLevel;
         animation = view.animation;
 
@@ -52,8 +58,8 @@ public class GameBreakController extends ViewController {
     @Override
     public void initialize() {
 
-        animation.setWidth(400*sizemulti);
-        animation.setHeight(400*sizemulti);
+        animation.setWidth(endAnimationSize * sizemulti);
+        animation.setHeight(endAnimationSize * sizemulti);
 
         repeatLevel.getStyleClass().addAll("button-Style");
 
@@ -61,27 +67,30 @@ public class GameBreakController extends ViewController {
 
         nextLevel.getStyleClass().addAll("button-Style");
 
-        if(main.getGamePlayer().getGameState().get() != finishedMode.WON){
-            nextLevel.setDisable(true);
+        nextLevel.setDisable(true);
+        String newSoundFile = main.getGamePlayer().getCurrentSoundFile();
+        int songnumber = Integer.parseInt(newSoundFile.substring((newSoundFile.length() - 5), (newSoundFile.length() - 4)));
+        if (main.getGamePlayer().getGameState().get() == finishedMode.WON || main.getCurrentLevel() > songnumber) {
+            nextLevel.setDisable(false);
+            main.setCurrentLevel(main.getCurrentLevel() + 1);
         }
 
         try {
             ImageView repeatLevelview = new ImageView(
                     new Image(new FileInputStream(String.format("%s/%s.png", "ressources/game/window", "repeat"))));
-            repeatLevelview.setFitHeight(40*sizemulti);
-            repeatLevelview.setFitWidth(40*sizemulti);
+            repeatLevelview.setFitHeight(baseIconSize * sizemulti);
+            repeatLevelview.setFitWidth(baseIconSize * sizemulti);
             repeatLevel.setGraphic(repeatLevelview);
             ImageView levelSelectionview = new ImageView(
                     new Image(new FileInputStream(String.format("%s/%s.png", "ressources/game/window", "level"))));
-            levelSelectionview.setFitHeight(40*sizemulti);
-            levelSelectionview.setFitWidth(40*sizemulti);
+            levelSelectionview.setFitHeight(baseIconSize * sizemulti);
+            levelSelectionview.setFitWidth(baseIconSize * sizemulti);
             levelSelection.setGraphic(levelSelectionview);
             ImageView nextLevelview = new ImageView(
                     new Image(new FileInputStream(String.format("%s/%s.png", "ressources/game/window", "nextlevel"))));
-            nextLevelview.setFitHeight(40*sizemulti);
-            nextLevelview.setFitWidth(40*sizemulti);
+            nextLevelview.setFitHeight(baseIconSize * sizemulti);
+            nextLevelview.setFitWidth(baseIconSize * sizemulti);
             nextLevel.setGraphic(nextLevelview);
-
 
 
         } catch (Exception e) {
@@ -89,7 +98,7 @@ public class GameBreakController extends ViewController {
         }
 
         nextLevel.addEventHandler(ActionEvent.ACTION, event -> {
-            for(Node node : gameView.getChildren()) {
+            for (Node node : gameView.getChildren()) {
                 if (node instanceof Pane) {
                     for (Node platform : (((Pane) node).getChildren())) {
                         if (platform instanceof PlatformSprite || platform instanceof FrogSprite) {
@@ -105,15 +114,14 @@ public class GameBreakController extends ViewController {
                 }
             }
             stage.close();
-            String newSoundFile = main.getGamePlayer().getCurrentSoundFile();
-            int songnumber = Integer.parseInt(newSoundFile.substring((newSoundFile.length()-5),(newSoundFile.length()-4)));
-            if(songnumber%3 ==0)
-                main.setSelectedWorld(main.getSelectedWorld()+1);
-            main.getGamePlayer().start("songs/song" + (songnumber+1) +".xml");
+
+            if (songnumber % 3 == 0)
+                main.setSelectedWorld(main.getSelectedWorld() + 1);
+            main.getGamePlayer().start("songs/song" + (songnumber + 1) + ".xml");
         });
 
         levelSelection.addEventHandler(ActionEvent.ACTION, event -> {
-            for(Node node : gameView.getChildren()) {
+            for (Node node : gameView.getChildren()) {
                 if (node instanceof Pane) {
                     for (Node platform : (((Pane) node).getChildren())) {
                         if (platform instanceof PlatformSprite || platform instanceof FrogSprite) {
@@ -131,19 +139,15 @@ public class GameBreakController extends ViewController {
             main.getGamePlayer().getGameStarted().set(false);
             main.getGamePlayer().getGameState().set(finishedMode.PLAYING);
             main.getGamePlayer().getTimer().stop();
-            String newSoundFile = main.getGamePlayer().getCurrentSoundFile();
-            int songnumber = Integer.parseInt(newSoundFile.substring((newSoundFile.length()-5),(newSoundFile.length()-4)));
-            songnumber = songnumber/3;
-            switch (songnumber){
-                case 0:
-                    main.setSelectedWorld(1);
-                    break;
-                case 1:
-                    main.setSelectedWorld(2);
-                    break;
-                default:
-                    main.setSelectedWorld(3);
+
+            if (songnumber <= 3) {
+                main.setSelectedWorld(1);
+            } else if (songnumber > 3 && songnumber <= 6) {
+                main.setSelectedWorld(2);
+            } else {
+                main.setSelectedWorld(3);
             }
+
             main.resetScene(new LevelSelectionController(main), Main.Scenes.LEVELMENU);
             main.switchScene(Main.Scenes.LEVELMENU);
 
@@ -151,7 +155,7 @@ public class GameBreakController extends ViewController {
         });
 
         repeatLevel.addEventHandler(ActionEvent.ACTION, event -> {
-            for(Node node : gameView.getChildren()) {
+            for (Node node : gameView.getChildren()) {
                 if (node instanceof Pane) {
                     for (Node platform : (((Pane) node).getChildren())) {
                         if (platform instanceof PlatformSprite || platform instanceof FrogSprite) {
@@ -174,7 +178,7 @@ public class GameBreakController extends ViewController {
         Image img = null;
         try {
             img = new Image(new FileInputStream("ressources/menus/StartMenu/resize.gif"));
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -188,7 +192,6 @@ public class GameBreakController extends ViewController {
         view.setBackground(new Background(bgImage));
 
 
-
     }
 
     public void showStage() {
@@ -196,7 +199,7 @@ public class GameBreakController extends ViewController {
         stage.setAlwaysOnTop(true);
         stage.initStyle(StageStyle.UNDECORATED);
         this.stage = stage;
-        Scene newScene = new Scene(this.getRootView(),430*sizemulti,500*sizemulti);
+        Scene newScene = new Scene(this.getRootView(), baseStageWidth * sizemulti, baseStageHeigth * sizemulti);
         newScene.getStylesheets().add(getClass().getResource("../../application/application.css").toExternalForm());
         stage.setScene(newScene);
 

@@ -22,6 +22,14 @@ public class GameWorldGenerator {
     private Main main;
     private double sizemulti;
 
+    private final int frogStartpointX = 610;
+    private final int frogStartpointY = 630;
+    private final int firstPlatformColum = 400;
+    private final int secondPlatformColum = 550;
+    private final int thirdPlatformColum = 750;
+    private final int fourthtPlatformColum = 900;
+
+
     public GameWorldGenerator(Main main){
         this.main = main;
         sizemulti = main.getSizeMultiplyer();
@@ -43,8 +51,8 @@ public class GameWorldGenerator {
 
     public Frog createFrog(){
         Frog frog = new Frog(main);
-        frog.setY(650*sizemulti);
-        frog.setX(610*sizemulti);
+        frog.setY(frogStartpointY*sizemulti);
+        frog.setX(frogStartpointX*sizemulti);
         return frog;
     }
 
@@ -64,16 +72,16 @@ public class GameWorldGenerator {
             platform.setY(0);
             switch (newPosition) {
                 case 1:
-                    platform.setX((400*sizemulti));
+                    platform.setX((firstPlatformColum*sizemulti));
                     break;
                 case 2:
-                    platform.setX((550*sizemulti));
+                    platform.setX((secondPlatformColum*sizemulti));
                     break;
                 case 3:
-                    platform.setX((750*sizemulti));
+                    platform.setX((thirdPlatformColum*sizemulti));
                     break;
                 case 4:
-                    platform.setX((900*sizemulti));
+                    platform.setX((fourthtPlatformColum*sizemulti));
                     break;
             }
             return platform;

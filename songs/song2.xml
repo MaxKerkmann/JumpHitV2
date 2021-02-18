@@ -2,30 +2,30 @@
 <song locked = "false">
     <platform>
         <note>6C</note>
-        <duration>500</duration>
-        <position>3</position>
-        <passTime>1000</passTime>
+        <duration>1000</duration>
+        <position>1</position>
+        <passTime>3400</passTime>
         <pauseTime>2000</pauseTime>
     </platform>
     <platform>
         <note>6C#</note>
         <duration>500</duration>
         <position>4</position>
-        <passTime>1000</passTime>
-        <pauseTime>2000</pauseTime>
+        <passTime>3400</passTime>
+        <pauseTime>3000</pauseTime>
     </platform>
     <platform>
         <note>6D</note>
         <duration>500</duration>
-        <position>3</position>
-        <passTime>1000</passTime>
+        <position>2</position>
+        <passTime>4000</passTime>
         <pauseTime>2000</pauseTime>
     </platform>
     <platform>
         <note>6D#</note>
         <duration>500</duration>
-        <position>4</position>
-        <passTime>1000</passTime>
+        <position>3</position>
+        <passTime>3400</passTime>
         <pauseTime>2000</pauseTime>
     </platform>
 </song>

@@ -2,7 +2,7 @@
 <song locked = "false">
     <platform>
         <note>6C</note>
-        <duration>500</duration>
+        <duration>1000</duration>
         <position>1</position>
         <passTime>3400</passTime>
         <pauseTime>2000</pauseTime>

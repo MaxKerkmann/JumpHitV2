@@ -21,7 +21,9 @@ public class Platform implements GameObject {
 
     private double sizemulti;
 
-    public Platform(String note, int duration, int position, int passTime, double pauseTime, double sizemulti){
+    private final double baseHeight = 1280.0;
+
+    public Platform(String note, int duration, int position, int passTime, double pauseTime, double sizemulti) {
         this.note = note;
         this.duration = duration;
         this.position = position;
@@ -32,8 +34,8 @@ public class Platform implements GameObject {
 
     }
 
-    private double calculateFallingSpeed(){
-        double speed = (1280.0*sizemulti)*(1000.0/passTime);
+    private double calculateFallingSpeed() {
+        double speed = (baseHeight * sizemulti) * (1000.0 / passTime);
         return speed;
 //        return 200;
     }
@@ -42,19 +44,19 @@ public class Platform implements GameObject {
         this.x = x;
     }
 
-    public void setY(double y){
+    public void setY(double y) {
         this.y = y;
     }
 
-    public double getPauseTime(){
+    public double getPauseTime() {
         return pauseTime;
     }
 
-    public void setPauseTime(double newPauseTime){
+    public void setPauseTime(double newPauseTime) {
         pauseTime = newPauseTime;
     }
 
-    public String getNote(){
+    public String getNote() {
         return note;
     }
 
@@ -62,11 +64,11 @@ public class Platform implements GameObject {
         return duration;
     }
 
-    public void setClicked(){
+    public void setClicked() {
         clicked = true;
     }
 
-    public boolean getClicked(){
+    public boolean getClicked() {
         return clicked;
     }
 
@@ -81,12 +83,7 @@ public class Platform implements GameObject {
     }
 
     @Override
-    public double getRotation() {
-        return rotation;
-    }
-
-    @Override
     public void update(double multi) {
-        y = y + (fallingSpeed*multi);
+        y = y + (fallingSpeed * multi);
     }
 }

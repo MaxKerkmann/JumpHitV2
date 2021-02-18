@@ -6,7 +6,6 @@ import javafx.scene.Node;
 public interface GameObject {
     double getX();
     double getY();
-    double getRotation();
 
     void update(double multi);
 }

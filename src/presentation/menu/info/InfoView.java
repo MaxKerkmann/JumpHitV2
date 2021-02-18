@@ -19,6 +19,5 @@ public class InfoView extends BorderPane {
 
         this.setTop(boxTitle);
         this.getStyleClass().add("window-Style");
-        this.setId("info");
     }
 }

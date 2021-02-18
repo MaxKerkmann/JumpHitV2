@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import presentation.ViewController;
@@ -28,7 +28,10 @@ public class WorldSelectionController extends ViewController {
 	private WorldSelectionView view;
 	private double sizemulti;
 
-	
+	private final int basetileFontsize = 30;
+	private final int baseButtonSize = 220;
+	private final int baseClosePadding = 900;
+
 	private Main main;
 	
 	public WorldSelectionController(Main main) {
@@ -51,9 +54,9 @@ public class WorldSelectionController extends ViewController {
 	@Override
 	public void initialize() {
 
-		title.setFont(Font.font("Arial", FontWeight.BOLD,30* sizemulti));
+		title.setFont(Font.font("Arial", FontWeight.BOLD,basetileFontsize* sizemulti));
 		title.setText("Welten");
-		close.getRootView().setPadding(new Insets(1,1,1,900* sizemulti));
+		close.getRootView().setPadding(new Insets(1,1,1,baseClosePadding* sizemulti));
 		HBox top = new HBox();
 		HBox topright = new HBox();
 		topright.getChildren().add(close.getRootView());
@@ -66,24 +69,25 @@ public class WorldSelectionController extends ViewController {
 		try {
 			ImageView world1View = new ImageView(
 					new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/StartMenu", "weltenbutton_welt1"))));
-			world1View.setFitHeight(220* sizemulti);
-			world1View.setFitWidth(220* sizemulti);
+			world1View.setFitHeight(baseButtonSize* sizemulti);
+			world1View.setFitWidth(baseButtonSize* sizemulti);
 			world1.setGraphic(world1View);
 
 			ImageView world2View = new ImageView(
 					new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/StartMenu", "weltenbutton_welt2"))));
-			world2View.setFitHeight(220* sizemulti);
-			world2View.setFitWidth(220* sizemulti);
+			world2View.setFitHeight(baseButtonSize* sizemulti);
+			world2View.setFitWidth(baseButtonSize* sizemulti);
 			world2.setGraphic(world2View);
 
 			ImageView world3View = new ImageView(
 					new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/StartMenu", "weltenbutton_welt3"))));
-			world3View.setFitHeight(220* sizemulti);
-			world3View.setFitWidth(220* sizemulti);
+			world3View.setFitHeight(baseButtonSize* sizemulti);
+			world3View.setFitWidth(baseButtonSize* sizemulti);
 			world3.setGraphic(world3View);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		world1.addEventHandler(ActionEvent.ACTION, event -> {
 			main.setSelectedWorld(1);
 			if(!main.sceneExists(Main.Scenes.LEVELMENU))
@@ -114,5 +118,20 @@ public class WorldSelectionController extends ViewController {
 			main.switchScene(Main.Scenes.LEVELMENU);
 		});
 
+		Image img = null;
+		try {
+			img = new Image(new FileInputStream("ressources/menus/StartMenu/weltenuebersicht_wiese.png"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		BackgroundImage bgImage = new BackgroundImage(
+				img,
+				BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT,
+				BackgroundPosition.DEFAULT,
+				new BackgroundSize(1.0, 1.0, true, true, false, false)
+		);
+		view.setBackground(new Background(bgImage));
 	}
 }

@@ -17,12 +17,16 @@ public class CloseController extends ViewController {
     private Button close;
     private CloseView view;
     private Main main;
+    private double sizemulti;
+
+    private final int buttonSize = 40;
 
     public CloseController(Main main) {
         view = new CloseView();
         this.main = main;
         close = view.close;
 
+        sizemulti = main.getSizeMultiplyer();
         rootView = view;
 
         initialize();
@@ -35,8 +39,8 @@ public class CloseController extends ViewController {
         try {
             ImageView closeview = new ImageView(
                     new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/icons", "close"))));
-            closeview.setFitHeight(40);
-            closeview.setFitWidth(40);
+            closeview.setFitHeight(buttonSize*sizemulti);
+            closeview.setFitWidth(buttonSize*sizemulti);
             close.setGraphic(closeview);
         }catch (Exception e){
 

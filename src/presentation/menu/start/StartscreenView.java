@@ -28,6 +28,5 @@ public class StartscreenView extends BorderPane {
 
 		this.setCenter(buttons);
 		this.getStyleClass().add("window-Style");
-		this.setId("startscreen");
 	}
 }

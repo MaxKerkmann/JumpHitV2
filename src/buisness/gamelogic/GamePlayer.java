@@ -31,7 +31,9 @@ public class GamePlayer {
     private boolean wasStartedBefore;
     private double sizemulti;
 
-    public GamePlayer(Main main){
+    private final int baseViewRange = 800;
+
+    public GamePlayer(Main main) {
         gameStarted = new SimpleBooleanProperty();
         currentPlatform = new SimpleObjectProperty();
         gameState = new SimpleObjectProperty<finishedMode>();
@@ -42,17 +44,13 @@ public class GamePlayer {
         gameState.addListener(new ChangeListener<finishedMode>() {
             @Override
             public void changed(ObservableValue<? extends finishedMode> observable, finishedMode oldValue, finishedMode newValue) {
-                if(newValue == finishedMode.LOST){
-                    timer.stop();
-                }else if(newValue == finishedMode.WON){
-                    timer.stop();
-                }
+               timer.stop();
             }
         });
     }
 
     //Methode die ausgeführt wird, wenn das Level wiederholt wird
-    public void restart(){
+    public void restart() {
         gameStarted.set(false);
         cleanPlayField();
         gameState.set(finishedMode.PLAYING);
@@ -61,7 +59,7 @@ public class GamePlayer {
 
     //Methode zum Starten des Spiels
     public void start(String soundFile) {
-        if(wasStartedBefore)
+        if (wasStartedBefore)
             restart();
         wasStartedBefore = true;
 
@@ -79,12 +77,12 @@ public class GamePlayer {
         currentPlatform.set(p);
         gameStarted.set(true);
 
-         timer = new AnimationTimer() {
+        timer = new AnimationTimer() {
 
             private long lastUpdate;
             private Platform p;
 
-             @Override
+            @Override
             public void start() {
 
                 lastUpdate = System.nanoTime();
@@ -94,33 +92,33 @@ public class GamePlayer {
             @Override
             public void handle(long now) { //Methode die vom Timer jedes Mal ausgeführt wird
                 long elapsedNanoSeconds = now - lastUpdate;
-                if(p == null)
+                if (p == null)
                     p = currentPlatform.get();
                 double elapsedSeconds = elapsedNanoSeconds / 1_000_000_000.0; //Berechnet die verstrichene Zeit seit dem letzten Update
                 double elapsedMilisecounds = elapsedNanoSeconds / 1_000_000.0;
 
-                currentPlatform.get().setPauseTime(currentPlatform.get().getPauseTime()-elapsedMilisecounds); //Berechnet die übrige Zeit die bis zur nächsten Platform gewartet wird
-                if(currentPlatform.get().getPauseTime() <= 0){ //Wenn Zeit gleich 0 wird die nächste Platform erstellt
-                   p = gameWorldGenerator.createPlatformByIndex(index);
-                    if(p != null) {
+                currentPlatform.get().setPauseTime(currentPlatform.get().getPauseTime() - elapsedMilisecounds); //Berechnet die übrige Zeit die bis zur nächsten Platform gewartet wird
+                if (currentPlatform.get().getPauseTime() <= 0) { //Wenn Zeit gleich 0 wird die nächste Platform erstellt
+                    p = gameWorldGenerator.createPlatformByIndex(index);
+                    if (p != null) {
                         gameWorld.add(p);
                         currentPlatform.set(p);
                         index++;
                     }
                 }
-                finishedMode temp = gameWorld.update(elapsedSeconds,p); // Updated alle GameObjekte und gibt zurück, ob das Spiel beendet ist
-                if (temp==finishedMode.LOST)
+                finishedMode temp = gameWorld.update(elapsedSeconds, p); // Updated alle GameObjekte und gibt zurück, ob das Spiel beendet ist
+                if (temp == finishedMode.LOST)
                     gameState.set(finishedMode.LOST);
-                else if(temp==finishedMode.WON)
+                else if (temp == finishedMode.WON)
                     gameState.set(finishedMode.WON);
 
                 ArrayList<SimpleSprite> spritesToDel = new ArrayList<>();
                 for (SimpleSprite sprite : sprites) { // Führt für alle Sprites die render-Methode aus
                     sprite.render();
-                    if(sprite.getYCoord()>800*sizemulti)//Löscht nicht mehr zu sehende Sprites aus der Update-Liste
+                    if (sprite.getYCoord() > baseViewRange * sizemulti)//Löscht nicht mehr zu sehende Sprites aus der Update-Liste
                         spritesToDel.add(sprite);
                 }
-                for(SimpleSprite sprite : spritesToDel){
+                for (SimpleSprite sprite : spritesToDel) {
                     sprites.remove(sprite);
                 }
 
@@ -132,35 +130,40 @@ public class GamePlayer {
     }
 
     //Leert die Listen der GameObjekte und Sprites
-    public void cleanPlayField(){
+    public void cleanPlayField() {
         gameWorld.removeAll();
-        for(int i = 0;i<sprites.size();i++){
+        for (int i = 0; i < sprites.size(); i++) {
             sprites.remove(i);
         }
     }
-    public Frog getFrog(){
+
+    public Frog getFrog() {
         return frog;
     }
 
-    public void addToSprites(SimpleSprite object){
+    public void addToSprites(SimpleSprite object) {
         sprites.add(object);
     }
 
-    public SimpleObjectProperty getPlatformCounter(){
+    public SimpleObjectProperty getPlatformCounter() {
         return currentPlatform;
     }
 
-    public SimpleBooleanProperty getGameStarted(){ return gameStarted;}
+    public SimpleBooleanProperty getGameStarted() {
+        return gameStarted;
+    }
 
-    public SimpleObjectProperty<finishedMode> getGameState(){ return gameState;}
+    public SimpleObjectProperty<finishedMode> getGameState() {
+        return gameState;
+    }
 
-    public AnimationTimer getTimer(){
-        if(timer != null)
+    public AnimationTimer getTimer() {
+        if (timer != null)
             return timer;
         return null;
     }
 
-    public String getCurrentSoundFile(){
+    public String getCurrentSoundFile() {
         return currentSoundFile;
     }
 

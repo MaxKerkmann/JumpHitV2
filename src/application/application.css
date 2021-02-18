@@ -3,11 +3,6 @@
 /* . steht für Klasse -> koennen mehrere zugehoeren */
 .button-Style-start {
     -fx-padding: 5;
-    /*-fx-font-size: 38;
-    -fx-pref-height: 100;
-    -fx-pref-width: 220;*/
-    -fx-font-family: Arial;
-
     -fx-background-color: FF3;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
@@ -16,13 +11,10 @@
 
 .button-Style-start:hover{
 	  -fx-background-color: F93;
-	  -fx-font-family: Arial;
-	  -fx-font-weight: bold;
 }
 
 .button-Style-worldSelection{
     -fx-padding: 5;
-
     -fx-background-color: #0e0a43;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
@@ -47,23 +39,11 @@
 
 .window-Style{
 	 -fx-padding: 20;
-	 -fx-background-color: blue;
 }
 
 
 
 /* # ab hier alle ID's */
-#startscreen{
-    -fx-background-image: url("../../ressources/menus/StartMenu/startseite.png");
-}
-
-#worldSelection{
-    -fx-background-image: url("../../ressources/menus/StartMenu/weltenuebersicht_wiese.png");
-}
-
-#info{
-    -fx-background-image: url("../../ressources/menus/StartMenu/info.png");
-}
 
 #back-button{
     -fx-background-image: url("../../ressources/menus/StartMenu/back-button.png");

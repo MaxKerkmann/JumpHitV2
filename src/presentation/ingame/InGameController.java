@@ -40,12 +40,18 @@ public class InGameController extends ViewController {
     private int duration;
     private double sizemulti;
 
+    private final int baseSpriteSize = 64;
+    private final int baseGameBreakCoverHeight = 720;
+    private final int baseGameBreakCoverWidth = 1280;
+    private final int baseSavetyBirdHeigth = 100;
+    private final int baseSavetyBirdWidth = 700;
+
     SimpleObjectProperty currentPlatform;
     SimpleObjectProperty<finishedMode> gameState;
     SimpleBooleanProperty gameStarted;
 
 
-    public InGameController(Main main){
+    public InGameController(Main main) {
         soundPlayer = new SoundPlayer();
         view = new InGameView();
         this.main = main;
@@ -70,32 +76,32 @@ public class InGameController extends ViewController {
         playfield.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if(mouseEvent.getTarget() instanceof Circle){
+                if (mouseEvent.getTarget() instanceof Circle) {
                     PlatformSprite temp = (PlatformSprite) mouseEvent.getTarget();
                     player.getFrog().setCurrentPlatform((Platform) temp.gameObjectProperty().get());
                     playfield.getChildren().remove(frogSprite);
                     playfield.getChildren().add(frogSprite);
-                    Platform platformObject =(Platform) temp.gameObjectProperty().get();
+                    Platform platformObject = (Platform) temp.gameObjectProperty().get();
 
-                    if(platformObject.getClicked()==false) {
+                    if (platformObject.getClicked() == false) {
                         note = platformObject.getNote();
                         duration = platformObject.getDuration();
 
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                while(player.getFrog().getJumpActive().get() == true){
+                                while (player.getFrog().getJumpActive().get() == true) {
 
                                 }
 
-                                  soundPlayer.toPlay(note,duration);
+                                soundPlayer.toPlay(note, duration);
                             }
                         }).start();
                         main.getGamePlayer().getFrog().getJumpActive().set(true);
                         platformObject.setClicked();
                     }
 
-                }else{
+                } else {
                     player.getGameState().set(finishedMode.LOST);
                 }
 
@@ -103,13 +109,12 @@ public class InGameController extends ViewController {
         });
 
 
-
         currentPlatform.addListener(new ChangeListener<GameObject>() {
             @Override
             public void changed(ObservableValue<? extends GameObject> observable, GameObject oldValue, GameObject newValue) {
 
                 PlatformSprite pSprite = new PlatformSprite(main.getSelectedWorld());
-                pSprite.setRadius(64*sizemulti);
+                pSprite.setRadius(baseSpriteSize * sizemulti);
                 pSprite.gameObjectProperty().set(newValue);
                 player.addToSprites(pSprite);
                 playfield.getChildren().add(pSprite);
@@ -121,25 +126,25 @@ public class InGameController extends ViewController {
             @Override
             public void changed(ObservableValue<? extends finishedMode> observable, finishedMode oldValue, finishedMode newValue) {
                 if (newValue == finishedMode.PLAYING) {
-                    view.getChildren().remove(view.getChildren().size()-1);
-                } else{
-                    Rectangle cover = new Rectangle(1280*sizemulti, 720*sizemulti);
+                    view.getChildren().remove(view.getChildren().size() - 1);
+                } else {
+                    Rectangle cover = new Rectangle(baseGameBreakCoverWidth * sizemulti, baseGameBreakCoverHeight * sizemulti);
                     cover.setFill(Color.GRAY);
                     cover.setOpacity(0.5);
                     view.getChildren().add(cover);
                     gameBreakController = new GameBreakController(main, view);
                     gameBreakController.showStage();
-            }
+                }
             }
         });
 
         gameStarted.addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(newValue){
+                if (newValue) {
                     frogSprite = new FrogSprite(main);
-                    frogSprite.setHeight(64*sizemulti);
-                    frogSprite.setWidth(64*sizemulti);
+                    frogSprite.setHeight(baseSpriteSize * sizemulti);
+                    frogSprite.setWidth(baseSpriteSize * sizemulti);
                     frogSprite.gameObjectProperty().setValue(player.getFrog());
                     player.addToSprites(frogSprite);
                     playfield.getChildren().add(frogSprite);
@@ -147,8 +152,8 @@ public class InGameController extends ViewController {
                     int worldNumber = main.getSelectedWorld();
                     Image img = null;
                     try {
-                        img = new Image(new FileInputStream("ressources/game/background/world"+ worldNumber +".png"));
-                    }catch (Exception e){
+                        img = new Image(new FileInputStream("ressources/game/background/world" + worldNumber + ".png"));
+                    } catch (Exception e) {
 
                     }
 
@@ -168,14 +173,14 @@ public class InGameController extends ViewController {
     @Override
     public void initialize() {
 
-        safetyBird.setHeight(100*sizemulti);
-        safetyBird.setWidth(700*sizemulti);
+        safetyBird.setHeight(baseSavetyBirdHeigth * sizemulti);
+        safetyBird.setWidth(baseSavetyBirdWidth * sizemulti);
 
         int worldNumber = main.getSelectedWorld();
         Image img = null;
         try {
-            img = new Image(new FileInputStream("ressources/game/background/world"+ worldNumber +".png"));
-        }catch (Exception e){
+            img = new Image(new FileInputStream("ressources/game/background/world" + worldNumber + ".png"));
+        } catch (Exception e) {
 
         }
 
@@ -191,11 +196,11 @@ public class InGameController extends ViewController {
 
         img = null;
         try {
-            if(worldNumber == 3)
+            if (worldNumber == 3)
                 img = new Image(new FileInputStream("ressources/game/platforms/savebird_space.png"));
             else
                 img = new Image(new FileInputStream("ressources/game/platforms/savebird.png"));
-        }catch (Exception e) {
+        } catch (Exception e) {
 
         }
         safetyBird.setFill(new ImagePattern(img));

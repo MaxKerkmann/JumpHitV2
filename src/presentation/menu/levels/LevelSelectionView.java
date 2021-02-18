@@ -27,9 +27,11 @@ public class LevelSelectionView extends BorderPane {
 		level3.getStyleClass().add("button-Style-start");
 		bottumCenter.setSpacing(150);
 		bottumCenter.getChildren().addAll(level2,level3);
+		bottumCenter.setAlignment(Pos.CENTER);
 		center.setAlignment(Pos.CENTER);
 		center.setSpacing(150);
 		center.getChildren().addAll(level1,bottumCenter);
+
 		this.setCenter(center);
 		this.getStyleClass().add("window-Style");
 	}

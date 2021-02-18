@@ -11,7 +11,9 @@ public class GameWorld {
     private ArrayList<GameObject> gameObjects = new ArrayList<>();
     private double sizemulti;
 
-    public GameWorld(Main main){
+    private final int baseGameHeigth = 780;
+
+    public GameWorld(Main main) {
         sizemulti = main.getSizeMultiplyer();
     }
 
@@ -19,12 +21,12 @@ public class GameWorld {
         gameObjects.add(object);
     }
 
-    public void remove(int index){
+    public void remove(int index) {
         gameObjects.remove(index);
     }
 
-    public void removeAll(){
-        for(int i = 0;i < gameObjects.size(); i++){
+    public void removeAll() {
+        for (int i = 0; i < gameObjects.size(); i++) {
             gameObjects.remove(i);
         }
     }
@@ -33,24 +35,24 @@ public class GameWorld {
     public finishedMode update(double multi, Platform p) {
         finishedMode gameFinished = finishedMode.PLAYING;
         boolean couldWin = true;
-        for(int i = 0;i<gameObjects.size();i++) {
+        for (int i = 0; i < gameObjects.size(); i++) {
             GameObject gameObject = gameObjects.get(i);
             gameObject.update(multi);
 
             if (gameObject instanceof Platform) {
                 Platform temp = (Platform) gameObject;
-                if (gameObject.getY() > 780*sizemulti && !temp.getClicked()) {
+                if (gameObject.getY() > baseGameHeigth * sizemulti && !temp.getClicked()) {
                     gameFinished = finishedMode.LOST;
                     couldWin = false;
-                } else if (gameObject.getY() < 780*sizemulti) {
+                } else if (gameObject.getY() < baseGameHeigth * sizemulti) {
                     couldWin = false;
                 }
-                if (gameObject.getY() > 780*sizemulti && temp.getClicked()) {
+                if (gameObject.getY() > baseGameHeigth * sizemulti && temp.getClicked()) {
                     remove(i);
                 }
             }
         }
-        if(couldWin && p == null)
+        if (couldWin && p == null)
             gameFinished = finishedMode.WON;
         return gameFinished;
     }

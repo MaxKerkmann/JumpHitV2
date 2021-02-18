@@ -42,6 +42,11 @@ public class ResizeController extends ViewController {
     private int size;
     private double sizemulti;
 
+    private final int titleFontsize = 30;
+    private final int currentsizeFontsize = 15;
+    private final int stageHeigth =300;
+    private final int stageWidth =280;
+
     public ResizeController(Main main){
         this.main = main;
         view = new ResizeView();
@@ -74,7 +79,7 @@ public class ResizeController extends ViewController {
         big.setText("1920x1080");
 
         title.setText("Einstellungen");
-        title.setFont(Font.font("Arial", FontWeight.BOLD,30));
+        title.setFont(Font.font("Arial", FontWeight.BOLD,titleFontsize));
 
         switch (main.getSize()){
             case 1:
@@ -87,7 +92,7 @@ public class ResizeController extends ViewController {
                 currentSize.setText("1920x1080");
                 break;
         }
-        currentSize.setFont(Font.font("Arial", FontWeight.BOLD,15));
+        currentSize.setFont(Font.font("Arial", FontWeight.BOLD,currentsizeFontsize));
 
         accept.setText("Annehmen");
         rollback.setText("Abbrechen");
@@ -176,7 +181,7 @@ public class ResizeController extends ViewController {
         stage.setAlwaysOnTop(true);
         stage.initStyle(StageStyle.UNDECORATED);
         this.stage = stage;
-        Scene newScene = new Scene(this.getRootView(),280,300);
+        Scene newScene = new Scene(this.getRootView(),stageWidth,stageHeigth);
         newScene.getStylesheets().add(getClass().getResource("../../../application/application.css").toExternalForm());
         stage.setScene(newScene);
         stage.show();
