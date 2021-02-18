@@ -175,6 +175,9 @@ public class Main extends Application {
 	public void setSize(int size){
 		this.size = size;
 	}
+	public int getSize(){
+		return size;
+	}
 
 	public int getCurrentLevel(){
 		return currentLevel;

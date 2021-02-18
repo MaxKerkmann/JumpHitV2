@@ -10,11 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import presentation.ViewController;
+import presentation.menu.levels.LevelSelectionController;
 import presentation.uicomponents.FrogSprite;
 import presentation.uicomponents.PlatformSprite;
 
@@ -103,10 +104,11 @@ public class GameBreakController extends ViewController {
                     }
                 }
             }
-
             stage.close();
             String newSoundFile = main.getGamePlayer().getCurrentSoundFile();
             int songnumber = Integer.parseInt(newSoundFile.substring((newSoundFile.length()-5),(newSoundFile.length()-4)));
+            if(songnumber%3 ==0)
+                main.setSelectedWorld(main.getSelectedWorld()+1);
             main.getGamePlayer().start("songs/song" + (songnumber+1) +".xml");
         });
 
@@ -129,6 +131,20 @@ public class GameBreakController extends ViewController {
             main.getGamePlayer().getGameStarted().set(false);
             main.getGamePlayer().getGameState().set(finishedMode.PLAYING);
             main.getGamePlayer().getTimer().stop();
+            String newSoundFile = main.getGamePlayer().getCurrentSoundFile();
+            int songnumber = Integer.parseInt(newSoundFile.substring((newSoundFile.length()-5),(newSoundFile.length()-4)));
+            songnumber = songnumber/3;
+            switch (songnumber){
+                case 0:
+                    main.setSelectedWorld(1);
+                    break;
+                case 1:
+                    main.setSelectedWorld(2);
+                    break;
+                default:
+                    main.setSelectedWorld(3);
+            }
+            main.resetScene(new LevelSelectionController(main), Main.Scenes.LEVELMENU);
             main.switchScene(Main.Scenes.LEVELMENU);
 
             stage.close();
@@ -155,6 +171,22 @@ public class GameBreakController extends ViewController {
             stage.close();
         });
 
+        Image img = null;
+        try {
+            img = new Image(new FileInputStream("ressources/menus/StartMenu/resize.gif"));
+        }catch (Exception e){
+
+        }
+
+        BackgroundImage bgImage = new BackgroundImage(
+                img,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(1.0, 1.0, true, true, false, false)
+        );
+        view.setBackground(new Background(bgImage));
+
 
 
     }
@@ -165,6 +197,7 @@ public class GameBreakController extends ViewController {
         stage.initStyle(StageStyle.UNDECORATED);
         this.stage = stage;
         Scene newScene = new Scene(this.getRootView(),430*sizemulti,500*sizemulti);
+        newScene.getStylesheets().add(getClass().getResource("../../application/application.css").toExternalForm());
         stage.setScene(newScene);
 
         stage.show();

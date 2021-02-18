@@ -44,10 +44,8 @@ public class GamePlayer {
             public void changed(ObservableValue<? extends finishedMode> observable, finishedMode oldValue, finishedMode newValue) {
                 if(newValue == finishedMode.LOST){
                     timer.stop();
-                    System.out.println("Game Over");
                 }else if(newValue == finishedMode.WON){
                     timer.stop();
-                    System.out.println("You Won");
                 }
             }
         });

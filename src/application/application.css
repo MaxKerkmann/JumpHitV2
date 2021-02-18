@@ -3,9 +3,9 @@
 /* . steht für Klasse -> koennen mehrere zugehoeren */
 .button-Style-start {
     -fx-padding: 5;
-    -fx-font-size: 38;
+    /*-fx-font-size: 38;
     -fx-pref-height: 100;
-    -fx-pref-width: 220;
+    -fx-pref-width: 220;*/
     -fx-font-family: Arial;
 
     -fx-background-color: FF3;
@@ -69,6 +69,12 @@
     -fx-background-image: url("../../ressources/menus/StartMenu/back-button.png");
     -fx-pref-height: 60;
     -fx-pref-width: 60;
+    -fx-padding: 5;
+    -fx-border-style: none;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent;
+    -fx-font-size: 15
 }
 
 #back-button:hover{

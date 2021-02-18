@@ -25,13 +25,13 @@ public class StartscreenController extends ViewController {
 	private StartscreenView view;
 	private Main main;
 	private CloseController close;
-	private ResizeController resize;
+
 
 	public StartscreenController(Main main) {
 		this.main = main;
 		view = new StartscreenView();
 		close = new CloseController(main);
-		resize = new ResizeController(main);
+
 		startButton = view.startButton;
 		infoButton = view.infoButton;
 		resizeButton = view.resizeButton;
