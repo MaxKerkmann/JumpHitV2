@@ -26,19 +26,12 @@ public class PlatformSprite extends Circle implements SimpleSprite {
         try {
             img = new Image(new FileInputStream("ressources/game/platforms/platform"+ worldnumber +""+ addon +".png"));
         }catch (Exception e){
-
+            e.printStackTrace();
         }
-
-
         this.setFill(new ImagePattern(img));
 
 
-        gameObject.addListener(new ChangeListener<GameObject>() {
-            @Override
-            public void changed(ObservableValue<? extends GameObject> observable, GameObject oldValue, GameObject newValue) {
-                render();
-            }
-        });
+        gameObject.addListener((observable, oldValue, newValue) -> render());
     }
 
     @Override

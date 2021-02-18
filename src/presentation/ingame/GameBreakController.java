@@ -72,6 +72,7 @@ public class GameBreakController extends ViewController {
         int songnumber = Integer.parseInt(newSoundFile.substring((newSoundFile.length() - 5), (newSoundFile.length() - 4)));
         if (main.getGamePlayer().getGameState().get() == finishedMode.WON || main.getCurrentLevel() > songnumber) {
             nextLevel.setDisable(false);
+            if(main.getCurrentLevel() == songnumber)
             main.setCurrentLevel(main.getCurrentLevel() + 1);
         }
 

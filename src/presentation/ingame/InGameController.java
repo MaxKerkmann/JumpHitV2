@@ -46,9 +46,9 @@ public class InGameController extends ViewController {
     private final int baseSavetyBirdHeigth = 100;
     private final int baseSavetyBirdWidth = 700;
 
-    SimpleObjectProperty currentPlatform;
-    SimpleObjectProperty<finishedMode> gameState;
-    SimpleBooleanProperty gameStarted;
+    private SimpleObjectProperty currentPlatform;
+    private SimpleObjectProperty<finishedMode> gameState;
+    private SimpleBooleanProperty gameStarted;
 
 
     public InGameController(Main main) {
@@ -78,12 +78,13 @@ public class InGameController extends ViewController {
             public void handle(MouseEvent mouseEvent) {
                 if (mouseEvent.getTarget() instanceof Circle) {
                     PlatformSprite temp = (PlatformSprite) mouseEvent.getTarget();
+
                     player.getFrog().setCurrentPlatform((Platform) temp.gameObjectProperty().get());
                     playfield.getChildren().remove(frogSprite);
                     playfield.getChildren().add(frogSprite);
                     Platform platformObject = (Platform) temp.gameObjectProperty().get();
 
-                    if (platformObject.getClicked() == false) {
+                    if (!platformObject.getClicked()) {
                         note = platformObject.getNote();
                         duration = platformObject.getDuration();
 
@@ -112,13 +113,11 @@ public class InGameController extends ViewController {
         currentPlatform.addListener(new ChangeListener<GameObject>() {
             @Override
             public void changed(ObservableValue<? extends GameObject> observable, GameObject oldValue, GameObject newValue) {
-
                 PlatformSprite pSprite = new PlatformSprite(main.getSelectedWorld());
                 pSprite.setRadius(baseSpriteSize * sizemulti);
                 pSprite.gameObjectProperty().set(newValue);
                 player.addToSprites(pSprite);
                 playfield.getChildren().add(pSprite);
-
             }
         });
 
@@ -165,6 +164,17 @@ public class InGameController extends ViewController {
                             new BackgroundSize(1.0, 1.0, true, true, false, false)
                     );
                     view.setBackground(new Background(bgImage));
+
+                    img = null;
+                    try {
+                        if (worldNumber == 3)
+                            img = new Image(new FileInputStream("ressources/game/platforms/savebird_space.png"));
+                        else
+                            img = new Image(new FileInputStream("ressources/game/platforms/savebird.png"));
+                    } catch (Exception e) {
+
+                    }
+                    safetyBird.setFill(new ImagePattern(img));
                 }
             }
         });
