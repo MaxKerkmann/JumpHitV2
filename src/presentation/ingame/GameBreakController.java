@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -74,6 +75,25 @@ public class GameBreakController extends ViewController {
             nextLevel.setDisable(false);
             if(main.getCurrentLevel() == songnumber)
             main.setCurrentLevel(main.getCurrentLevel() + 1);
+
+        }
+        if(main.getGamePlayer().getGameState().get() == finishedMode.WON){
+            Image img = null;
+            try {
+                img = new Image(new FileInputStream("ressources/game/window/frog_win.png"));
+            } catch (Exception e) {
+
+            }
+            animation.setFill(new ImagePattern(img));
+
+        }else{
+            Image img = null;
+            try {
+                img = new Image(new FileInputStream("ressources/game/window/frog_loss.png"));
+            } catch (Exception e) {
+
+            }
+            animation.setFill(new ImagePattern(img));
         }
 
         try {
