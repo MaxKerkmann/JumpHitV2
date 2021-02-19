@@ -10,7 +10,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import presentation.uicomponents.SimpleSprite;
-import sun.awt.Symbol;
 
 import java.util.ArrayList;
 

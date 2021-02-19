@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import presentation.ViewController;
-import presentation.components.backbutton.CloseController;
+import presentation.components.close.CloseController;
 import presentation.menu.info.InfoController;
 import presentation.menu.resize.ResizeController;
 import presentation.menu.worlds.WorldSelectionController;

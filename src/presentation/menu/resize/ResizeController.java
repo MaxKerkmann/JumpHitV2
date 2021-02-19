@@ -1,31 +1,20 @@
 package presentation.menu.resize;
 
 import application.Main;
-import buisness.gamelogic.GamePlayer;
-import buisness.gamelogic.finishedMode;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import presentation.ViewController;
-import presentation.uicomponents.FrogSprite;
-import presentation.uicomponents.PlatformSprite;
 
-import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class ResizeController extends ViewController {
 
@@ -160,7 +149,7 @@ public class ResizeController extends ViewController {
 
         Image img = null;
         try {
-            img = new Image(new FileInputStream("ressources/menus/StartMenu/resize.gif"));
+            img = new Image(new FileInputStream("ressources/menus/Options/resize.gif"));
         }catch (Exception e){
 
         }

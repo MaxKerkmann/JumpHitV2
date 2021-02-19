@@ -1,7 +1,6 @@
 package presentation.ingame;
 
 import application.Main;
-import buisness.gamelogic.GamePlayer;
 import buisness.gamelogic.finishedMode;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -73,9 +72,8 @@ public class GameBreakController extends ViewController {
         int songnumber = Integer.parseInt(newSoundFile.substring((newSoundFile.length() - 5), (newSoundFile.length() - 4)));
         if (main.getGamePlayer().getGameState().get() == finishedMode.WON || main.getCurrentLevel() > songnumber) {
             nextLevel.setDisable(false);
-            if(main.getCurrentLevel() == songnumber)
+            if(main.getCurrentLevel() == songnumber-1)
             main.setCurrentLevel(main.getCurrentLevel() + 1);
-
         }
         if(main.getGamePlayer().getGameState().get() == finishedMode.WON){
             Image img = null;
@@ -136,9 +134,9 @@ public class GameBreakController extends ViewController {
             }
             stage.close();
 
-            if (songnumber % 3 == 0)
+            if ((songnumber) % 3 == 0)
                 main.setSelectedWorld(main.getSelectedWorld() + 1);
-            main.getGamePlayer().start("songs/song" + (songnumber + 1) + ".xml");
+            main.getGamePlayer().start("songs/song" + (songnumber+1) + ".xml");
         });
 
         levelSelection.addEventHandler(ActionEvent.ACTION, event -> {
@@ -198,7 +196,7 @@ public class GameBreakController extends ViewController {
 
         Image img = null;
         try {
-            img = new Image(new FileInputStream("ressources/menus/StartMenu/resize.gif"));
+            img = new Image(new FileInputStream("ressources/menus/Options/resize.gif"));
         } catch (Exception e) {
 
         }

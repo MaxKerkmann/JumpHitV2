@@ -1,11 +1,7 @@
 package presentation.uicomponents;
 
-import application.Main;
-import buisness.gameElements.Platform;
 import buisness.gamelogic.GameObject;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;

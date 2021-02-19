@@ -2,7 +2,6 @@ package buisness.gamelogic;
 
 import application.Main;
 import buisness.gameElements.Platform;
-import buisness.gamelogic.GameObject;
 
 import java.util.ArrayList;
 

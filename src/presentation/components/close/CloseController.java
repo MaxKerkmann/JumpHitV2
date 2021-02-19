@@ -1,12 +1,10 @@
-package presentation.components.backbutton;
+package presentation.components.close;
 
 import application.Main;
-import application.Main.Scenes;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import presentation.ViewController;
 
 import java.io.FileInputStream;

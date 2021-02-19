@@ -13,7 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import presentation.ViewController;
 import presentation.components.backbutton.BackButtonController;
-import presentation.components.backbutton.CloseController;
+import presentation.components.close.CloseController;
 import presentation.menu.levels.LevelSelectionController;
 
 import java.io.FileInputStream;
@@ -66,61 +66,28 @@ public class WorldSelectionController extends ViewController {
 		top.getChildren().addAll(back.getRootView(), title,topright);
 		view.setTop(top);
 
-		try {
-			ImageView world1View = new ImageView(
-					new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/StartMenu", "weltenbutton_welt1"))));
-			world1View.setFitHeight(baseButtonSize* sizemulti);
-			world1View.setFitWidth(baseButtonSize* sizemulti);
-			world1.setGraphic(world1View);
-
-			ImageView world2View = new ImageView(
-					new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/StartMenu", "weltenbutton_welt2"))));
-			world2View.setFitHeight(baseButtonSize* sizemulti);
-			world2View.setFitWidth(baseButtonSize* sizemulti);
-			world2.setGraphic(world2View);
-
-			ImageView world3View = new ImageView(
-					new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/StartMenu", "weltenbutton_welt3"))));
-			world3View.setFitHeight(baseButtonSize* sizemulti);
-			world3View.setFitWidth(baseButtonSize* sizemulti);
-			world3.setGraphic(world3View);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		world1.setGraphic(getImageView( "weltenbutton_welt1"));
+		world2.setGraphic(getImageView( "weltenbutton_welt2"));
+		world3.setGraphic(getImageView( "weltenbutton_welt3"));
 
 		world1.addEventHandler(ActionEvent.ACTION, event -> {
 			main.setSelectedWorld(1);
-			if(!main.sceneExists(Main.Scenes.LEVELMENU))
-				main.addScene(new LevelSelectionController(main), Main.Scenes.LEVELMENU);
-			else
-				main.resetScene(new LevelSelectionController(main),Main.Scenes.LEVELMENU);
-			main.setLastScene(Main.Scenes.WORLDMENU);
-			main.switchScene(Main.Scenes.LEVELMENU);
+			sceneSwitcher();
 		});
 
 		world2.addEventHandler(ActionEvent.ACTION, event -> {
 			main.setSelectedWorld(2);
-			if(!main.sceneExists(Main.Scenes.LEVELMENU))
-				main.addScene(new LevelSelectionController(main), Main.Scenes.LEVELMENU);
-			else
-				main.resetScene(new LevelSelectionController(main),Main.Scenes.LEVELMENU);
-			main.setLastScene(Main.Scenes.WORLDMENU);
-			main.switchScene(Main.Scenes.LEVELMENU);
+			sceneSwitcher();
 		});
 
 		world3.addEventHandler(ActionEvent.ACTION, event -> {
 			main.setSelectedWorld(3);
-			if(!main.sceneExists(Main.Scenes.LEVELMENU))
-				main.addScene(new LevelSelectionController(main), Main.Scenes.LEVELMENU);
-			else
-				main.resetScene(new LevelSelectionController(main),Main.Scenes.LEVELMENU);
-			main.setLastScene(Main.Scenes.WORLDMENU);
-			main.switchScene(Main.Scenes.LEVELMENU);
+			sceneSwitcher();
 		});
 
 		Image img = null;
 		try {
-			img = new Image(new FileInputStream("ressources/menus/StartMenu/weltenuebersicht_wiese.png"));
+			img = new Image(new FileInputStream("ressources/menus/WorldMenu/weltenuebersicht_wiese.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -133,5 +100,28 @@ public class WorldSelectionController extends ViewController {
 				new BackgroundSize(1.0, 1.0, true, true, false, false)
 		);
 		view.setBackground(new Background(bgImage));
+	}
+
+	private ImageView getImageView(String imageName){
+		ImageView worldView = null;
+		try {
+			worldView = new ImageView(
+					new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/WorldMenu", imageName))));
+			worldView.setFitHeight(baseButtonSize* sizemulti);
+			worldView.setFitWidth(baseButtonSize* sizemulti);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return worldView;
+	}
+
+	private void sceneSwitcher(){
+		if(!main.sceneExists(Main.Scenes.LEVELMENU))
+			main.addScene(new LevelSelectionController(main), Main.Scenes.LEVELMENU);
+		else
+			main.resetScene(new LevelSelectionController(main),Main.Scenes.LEVELMENU);
+		main.setLastScene(Main.Scenes.WORLDMENU);
+		main.switchScene(Main.Scenes.LEVELMENU);
 	}
 }

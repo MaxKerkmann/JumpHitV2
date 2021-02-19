@@ -21,11 +21,4 @@
         <passTime>4000</passTime>
         <pauseTime>2000</pauseTime>
     </platform>
-    <platform>
-        <note>6D#</note>
-        <duration>500</duration>
-        <position>3</position>
-        <passTime>3400</passTime>
-        <pauseTime>2000</pauseTime>
-    </platform>
 </song>

@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import presentation.ViewController;
 import presentation.components.backbutton.BackButtonController;
-import presentation.components.backbutton.CloseController;
+import presentation.components.close.CloseController;
 
 import java.io.FileInputStream;
 
@@ -56,7 +56,7 @@ public class InfoController extends ViewController {
 
         Image img = null;
         try {
-            img = new Image(new FileInputStream("ressources/menus/StartMenu/info.png"));
+            img = new Image(new FileInputStream("ressources/menus/Info/info.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }

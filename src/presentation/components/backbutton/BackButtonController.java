@@ -28,11 +28,10 @@ public class BackButtonController extends ViewController {
 
 		back.addEventHandler(ActionEvent.ACTION, event -> {
 
-			if (main.getLastScene() == Scenes.LEVELMENU) {
+			if (main.getLastScene() == Scenes.WORLDMENU) {
 				main.setLastScene(application.Main.Scenes.STARTSCENE);
 				main.switchScene(application.Main.Scenes.WORLDMENU);
 			} else {
-				main.setLastScene(application.Main.Scenes.WORLDMENU);
 				main.switchScene(application.Main.Scenes.STARTSCENE);
 			}
 		});

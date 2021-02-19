@@ -79,7 +79,6 @@ public class Main extends Application {
 
         try {
             this.primaryStage = primaryStage;
-            primaryStage.initStyle(StageStyle.UNDECORATED);
             BorderPane root = new BorderPane();
 
             Scene scene = new Scene(root, baseWidth * sizemulti, baseHeight * sizemulti);
@@ -88,6 +87,7 @@ public class Main extends Application {
             primaryStage.setScene(scene);
 
             switchScene(Scenes.STARTSCENE);
+            primaryStage.setResizable(false);
             primaryStage.show();
 
         } catch (Exception e) {
@@ -169,10 +169,6 @@ public class Main extends Application {
 
     public GamePlayer getGamePlayer() {
         return gamePlayer;
-    }
-
-    public void setGamePlayer(GamePlayer player) {
-        gamePlayer = player;
     }
 
     public void setLastScene(Scenes lastScene) {

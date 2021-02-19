@@ -1,4 +1,4 @@
-package presentation.components.backbutton;
+package presentation.components.close;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

@@ -1,6 +1,5 @@
 package buisness.gameElements;
 
-import application.Main;
 import buisness.gamelogic.GameObject;
 
 
@@ -17,7 +16,6 @@ public class Platform implements GameObject {
 
     private double x;
     private double y;
-    private int rotation;
 
     private double sizemulti;
 
@@ -37,7 +35,6 @@ public class Platform implements GameObject {
     private double calculateFallingSpeed() {
         double speed = (baseHeight * sizemulti) * (1000.0 / passTime);
         return speed;
-//        return 200;
     }
 
     public void setX(double x) {

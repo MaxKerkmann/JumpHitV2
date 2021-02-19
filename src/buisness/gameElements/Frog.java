@@ -2,16 +2,8 @@ package buisness.gameElements;
 
 import application.Main;
 import buisness.gamelogic.GameObject;
-import javafx.animation.PathTransition;
-import javafx.animation.Timeline;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.Node;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.util.Duration;
 
-import java.awt.*;
 
 //Frosch-Klasse
 public class Frog implements GameObject {
