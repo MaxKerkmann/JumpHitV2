@@ -27,7 +27,7 @@ public class InfoController extends ViewController {
     private double sizemulti;
 
     private final int baseLeftPadding = 900;
-    private final int baseHeadFontsize = 30;
+    private final int baseHeadFontsize = 50;
     private final int baseTextSize = 20;
     private final int spacing = 10;
     private final int baseCenterPadding = 340;

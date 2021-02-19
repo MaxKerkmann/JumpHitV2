@@ -69,8 +69,8 @@ public class StartscreenController extends ViewController {
 		try {
 			ImageView resizeButtonView = new ImageView(
 					new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/icons", "options"))));
-			resizeButtonView.setFitHeight(baseIconSize);
-			resizeButtonView.setFitWidth(baseIconSize);
+			resizeButtonView.setFitHeight(baseIconSize*sizemulti);
+			resizeButtonView.setFitWidth(baseIconSize*sizemulti);
 			resizeButton.setGraphic(resizeButtonView);
 		}catch (Exception e){
 
