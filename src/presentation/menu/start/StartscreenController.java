@@ -38,7 +38,7 @@ public class StartscreenController extends ViewController {
 		this.main = main;
 		view = new StartscreenView();
 		close = new CloseController(main);
-		sizemulti = main.getSizeMultiplyer();
+		sizemulti = main.getSizeMultiplier();
 
 		startButton = view.startButton;
 		infoButton = view.infoButton;

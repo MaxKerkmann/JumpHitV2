@@ -23,7 +23,7 @@ public class Frog implements GameObject {
     public Frog(Main main) {
         jumpActive = new SimpleBooleanProperty();
         jumpActive.set(false);
-        sizemulti = main.getSizeMultiplyer();
+        sizemulti = main.getSizeMultiplier();
     }
 
     public void setX(double x) {

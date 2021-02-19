@@ -24,7 +24,7 @@ public class CloseController extends ViewController {
         this.main = main;
         close = view.close;
 
-        sizemulti = main.getSizeMultiplyer();
+        sizemulti = main.getSizeMultiplier();
         rootView = view;
 
         initialize();

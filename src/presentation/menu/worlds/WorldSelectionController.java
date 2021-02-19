@@ -40,7 +40,7 @@ public class WorldSelectionController extends ViewController {
 		back = new BackButtonController(main);
 		close = new CloseController(main);
 
-		sizemulti = main.getSizeMultiplyer();
+		sizemulti = main.getSizeMultiplier();
 
 		world1 = view.buttonToWorld1;
 		world2 = view.buttonToWorld2;

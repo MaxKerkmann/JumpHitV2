@@ -35,7 +35,7 @@ public class LevelSelectionController extends ViewController {
 
     private final int baseFontsizeHead = 50;
     private final int baseFontsizeButton = 38;
-    private final int baseClosePadding = 900;
+    private final int baseClosePadding = 750;
     private final int baseButtonHeigth = 100;
     private final int baseButtonWidth = 220;
     private final int baseSpacing = 150;
@@ -49,7 +49,7 @@ public class LevelSelectionController extends ViewController {
         back = new BackButtonController(main);
         close = new CloseController(main);
 
-        sizemulti = main.getSizeMultiplyer();
+        sizemulti = main.getSizeMultiplier();
 
         level1 = view.level1;
         level2 = view.level2;
@@ -72,13 +72,13 @@ public class LevelSelectionController extends ViewController {
         title.setFont(Font.font("Arial", FontWeight.BOLD, baseFontsizeHead * sizemulti));
         switch (main.getSelectedWorld()) {
             case 1:
-                title.setText("Welt 1");
+                title.setText("Seerosenland");
                 break;
             case 2:
-                title.setText("Welt 2");
+                title.setText("Wolkenparty");
                 break;
             case 3:
-                title.setText("Welt 3");
+                title.setText("Galaxyreise");
                 title.setTextFill(Color.WHITE);
                 close.invertColor();
                 back.invertColor();
@@ -150,10 +150,16 @@ public class LevelSelectionController extends ViewController {
 
         Image img = null;
         try {
-            if (main.getSelectedWorld() == 3)
-                img = new Image(new FileInputStream("ressources/menus/LevelMenu/weltenuebersicht_sternenhimmel.png"));
-            else
-                img = new Image(new FileInputStream("ressources/menus/LevelMenu/weltenuebersicht_wiese.png"));
+            switch (main.getSelectedWorld()){
+                case 1:
+                    img = new Image(new FileInputStream("ressources/menus/LevelMenu/world1.png"));
+                    break;
+                case 2:
+                    img = new Image(new FileInputStream("ressources/menus/LevelMenu/world2.png"));
+                    break;
+                case 3:
+                    img = new Image(new FileInputStream("ressources/menus/LevelMenu/world3.png"));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

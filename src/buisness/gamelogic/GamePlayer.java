@@ -37,7 +37,7 @@ public class GamePlayer {
         currentPlatform = new SimpleObjectProperty();
         gameState = new SimpleObjectProperty<finishedMode>();
         this.main = main;
-        sizemulti = main.getSizeMultiplyer();
+        sizemulti = main.getSizeMultiplier();
 
         //Listener der drauf hört ob sich der Spielstatus ändert: Zum Beispiel auf von "Spiel läuft" auf "Verloren"
         gameState.addListener(new ChangeListener<finishedMode>() {

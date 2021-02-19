@@ -48,7 +48,7 @@ public class GameBreakController extends ViewController {
         nextLevel = view.nextLevel;
         animation = view.animation;
 
-        sizemulti = main.getSizeMultiplyer();
+        sizemulti = main.getSizeMultiplier();
 
         rootView = view;
 

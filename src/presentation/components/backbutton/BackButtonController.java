@@ -24,7 +24,7 @@ public class BackButtonController extends ViewController {
 		view = new BackButtonView();
 		this.main = main;
 		back = view.back;
-		sizemulti = main.getSizeMultiplyer();
+		sizemulti = main.getSizeMultiplier();
 
 		rootView = view;
 

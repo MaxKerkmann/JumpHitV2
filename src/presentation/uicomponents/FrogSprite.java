@@ -24,7 +24,7 @@ public class FrogSprite extends Rectangle implements SimpleSprite {
     private final int baseJumpingSpriteWidth = 96;
 
     public FrogSprite(Main main){
-        sizemulti = main.getSizeMultiplyer();
+        sizemulti = main.getSizeMultiplier();
         gameObject = new SimpleObjectProperty<>();
         jumpActive = main.getGamePlayer().getFrog().getJumpActive();
         int worldnumber = main.getSelectedWorld();

@@ -60,7 +60,7 @@ public class InGameController extends ViewController {
         gameState = player.getGameState();
         gameStarted = player.getGameStarted();
 
-        sizemulti = main.getSizeMultiplyer();
+        sizemulti = main.getSizeMultiplier();
 
         playfield = view.playfield;
         leftBorder = view.leftBorder;

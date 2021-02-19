@@ -47,7 +47,7 @@ public class ResizeController extends ViewController {
         currentSize = view.currentSize;
         title = view.title;
 
-        sizemulti = main.getSizeMultiplyer();
+        sizemulti = main.getSizeMultiplier();
 
         rootView = view;
 
@@ -100,14 +100,14 @@ public class ResizeController extends ViewController {
                         String currentline;
 
                         reader = new BufferedReader(
-                                new FileReader("configV2.txt"));
+                                new FileReader("config.txt"));
                         while ((currentline = reader.readLine()) != null) {
                             lines.add(currentline);
                         }
                         String edit = lines.get(0);
                         edit = edit.split(":")[0] + ":" + size;
                         lines.remove(0);
-                        writer = new BufferedWriter(new FileWriter("configV2.txt"));
+                        writer = new BufferedWriter(new FileWriter("config.txt"));
                         writer.write(edit);
                         writer.newLine();
                         for(String newline : lines){

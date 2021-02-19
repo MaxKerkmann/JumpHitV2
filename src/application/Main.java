@@ -54,7 +54,7 @@ public class Main extends Application {
             String currentline;
             int line = 0;
             reader = new BufferedReader(
-                    new FileReader("configV2.txt"));
+                    new FileReader("config.txt"));
             while ((currentline = reader.readLine()) != null) {
                 if (line == 0)
                     size = Integer.parseInt(currentline.split(":")[1]);
@@ -70,7 +70,7 @@ public class Main extends Application {
         } catch (IOException e) {
 
         }
-        sizemulti = getSizeMultiplyer();
+        sizemulti = getSizeMultiplier();
         gamePlayer = new GamePlayer(this);
     }
 
@@ -113,14 +113,14 @@ public class Main extends Application {
             String currentline;
 
             reader = new BufferedReader(
-                    new FileReader("configV2.txt"));
+                    new FileReader("config.txt"));
             while ((currentline = reader.readLine()) != null) {
                 lines.add(currentline);
             }
             String edit = lines.get(1);
             edit = edit.split(":")[0] + ":" + currentLevel;
             lines.remove(1);
-            writer = new BufferedWriter(new FileWriter("configV2.txt"));
+            writer = new BufferedWriter(new FileWriter("config.txt"));
             for (String newline : lines) {
                 writer.write(newline);
                 writer.newLine();
@@ -189,7 +189,7 @@ public class Main extends Application {
         selectedWorld = newWorld;
     }
 
-    public double getSizeMultiplyer() {
+    public double getSizeMultiplier() {
         switch (size) {
             case 1:
                 return (2.0 / 3.0);

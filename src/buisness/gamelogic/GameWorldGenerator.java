@@ -32,7 +32,7 @@ public class GameWorldGenerator {
 
     public GameWorldGenerator(Main main){
         this.main = main;
-        sizemulti = main.getSizeMultiplyer();
+        sizemulti = main.getSizeMultiplier();
     }
     //Setzt zu ladene SoundFile
     public void setCurrentSoundFile(String soundFile){

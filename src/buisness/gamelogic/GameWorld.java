@@ -13,7 +13,7 @@ public class GameWorld {
     private final int baseGameHeigth = 780;
 
     public GameWorld(Main main) {
-        sizemulti = main.getSizeMultiplyer();
+        sizemulti = main.getSizeMultiplier();
     }
 
     public void add(GameObject object) {
