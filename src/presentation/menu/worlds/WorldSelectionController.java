@@ -28,7 +28,7 @@ public class WorldSelectionController extends ViewController {
 	private WorldSelectionView view;
 	private double sizemulti;
 
-	private final int basetileFontsize = 30;
+	private final int basetileFontsize = 50;
 	private final int baseButtonSize = 220;
 	private final int baseClosePadding = 900;
 

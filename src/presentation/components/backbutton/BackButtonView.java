@@ -8,7 +8,7 @@ public class BackButtonView extends VBox {
 	Button back;
 	public BackButtonView() {
 		back = new Button();
-		back.setId("back-button");
+		back.getStyleClass().add("button-Style");
 		this.getChildren().add(back);
 	}
 }

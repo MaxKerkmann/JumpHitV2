@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/javaSoundTestFx.iml" filepath="$PROJECT_DIR$/javaSoundTestFx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JumpHit.iml" filepath="$PROJECT_DIR$/JumpHit.iml" />
     </modules>
   </component>
 </project>

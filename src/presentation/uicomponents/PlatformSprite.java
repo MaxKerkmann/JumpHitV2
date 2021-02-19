@@ -20,7 +20,7 @@ public class PlatformSprite extends Circle implements SimpleSprite {
         }
         Image img = null;
         try {
-            img = new Image(new FileInputStream("ressources/game/platforms/platform"+ worldnumber +""+ addon +".png"));
+            img = new Image(new FileInputStream("ressources/game/platforms/platformNote"+ worldnumber +""+ addon +".png"));
         }catch (Exception e){
             e.printStackTrace();
         }

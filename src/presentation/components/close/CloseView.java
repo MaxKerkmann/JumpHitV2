@@ -11,5 +11,6 @@ public class CloseView extends VBox {
         close = new Button();
         this.setAlignment(Pos.CENTER_RIGHT);
         this.getChildren().add(close);
+        close.getStyleClass().addAll("button-Style");
     }
 }

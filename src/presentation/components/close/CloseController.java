@@ -35,8 +35,7 @@ public class CloseController extends ViewController {
 
         close.getStyleClass().addAll("button-Style");
         try {
-            ImageView closeview = new ImageView(
-                    new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/icons", "close"))));
+            ImageView closeview = new ImageView(new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/icons", "close"))));
             closeview.setFitHeight(buttonSize*sizemulti);
             closeview.setFitWidth(buttonSize*sizemulti);
             close.setGraphic(closeview);
@@ -47,5 +46,16 @@ public class CloseController extends ViewController {
         close.addEventHandler(ActionEvent.ACTION, event -> {
             main.getPrimaryStage().close();
         });
+    }
+
+    public void invertColor(){
+        try {
+            ImageView closeview = new ImageView(new Image(new FileInputStream(String.format("%s/%s.png", "ressources/menus/icons", "close_white"))));
+            closeview.setFitHeight(buttonSize*sizemulti);
+            closeview.setFitWidth(buttonSize*sizemulti);
+            close.setGraphic(closeview);
+        }catch (Exception e){
+
+        }
     }
 }

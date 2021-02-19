@@ -12,10 +12,12 @@ public class LevelSelectionView extends BorderPane {
 	Button level2;
 	Button level3;
 	Label title;
+	VBox center;
+	HBox bottumCenter;
 	
 	public LevelSelectionView() {
-		VBox center = new VBox();
-		HBox bottumCenter = new HBox();
+		center = new VBox();
+		bottumCenter = new HBox();
 		
 		title = new Label();
 		
@@ -25,11 +27,9 @@ public class LevelSelectionView extends BorderPane {
 		level1.getStyleClass().add("button-Style-start");
 		level2.getStyleClass().add("button-Style-start");
 		level3.getStyleClass().add("button-Style-start");
-		bottumCenter.setSpacing(150);
 		bottumCenter.getChildren().addAll(level2,level3);
 		bottumCenter.setAlignment(Pos.CENTER);
 		center.setAlignment(Pos.CENTER);
-		center.setSpacing(150);
 		center.getChildren().addAll(level1,bottumCenter);
 
 		this.setCenter(center);

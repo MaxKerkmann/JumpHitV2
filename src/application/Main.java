@@ -11,6 +11,7 @@ import buisness.gamelogic.GamePlayer;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -88,6 +89,7 @@ public class Main extends Application {
 
             switchScene(Scenes.STARTSCENE);
             primaryStage.setResizable(false);
+            primaryStage.getIcons().addAll(new Image("file:icon.png"));
             primaryStage.show();
 
         } catch (Exception e) {
@@ -217,4 +219,6 @@ public class Main extends Application {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+
+
 }

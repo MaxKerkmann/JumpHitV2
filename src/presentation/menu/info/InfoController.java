@@ -42,6 +42,8 @@ public class InfoController extends ViewController {
     @Override
     public void initialize() {
         close.getRootView().setPadding(new Insets(1, 1, 1, baseLeftPadding * main.getSizeMultiplyer()));
+        close.invertColor();
+        back.invertColor();
         HBox top = new HBox();
         HBox topright = new HBox();
         topright.getChildren().add(close.getRootView());

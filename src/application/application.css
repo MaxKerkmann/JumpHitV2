@@ -37,30 +37,13 @@
     -fx-font-size: 15
 }
 
+.button-Style:hover {
+     -fx-background-color: lightgrey;
+}
+
 .window-Style{
 	 -fx-padding: 20;
 }
-
-
-
-/* # ab hier alle ID's */
-
-#back-button{
-    -fx-background-image: url("../../ressources/menus/Icons/back-button.png");
-    -fx-pref-height: 60;
-    -fx-pref-width: 60;
-    -fx-padding: 10;
-    -fx-border-style: none;
-    -fx-border-width: 0;
-    -fx-border-insets: 0;
-    -fx-background-color: transparent;
-    -fx-font-size: 15
-}
-
-#back-button:hover{
-    -fx-background-color: grey;
-}
-
 
 .gameWindow-Style{
      -fx-pref-height: 720;

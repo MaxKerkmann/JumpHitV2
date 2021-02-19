@@ -77,13 +77,26 @@ public class InGameController extends ViewController {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if (mouseEvent.getTarget() instanceof Circle) {
-                    PlatformSprite temp = (PlatformSprite) mouseEvent.getTarget();
-
-                    player.getFrog().setCurrentPlatform((Platform) temp.gameObjectProperty().get());
+                    PlatformSprite tempSprite = (PlatformSprite) mouseEvent.getTarget();
+                    player.getFrog().setCurrentPlatform((Platform) tempSprite.gameObjectProperty().get());
                     playfield.getChildren().remove(frogSprite);
                     playfield.getChildren().add(frogSprite);
-                    Platform platformObject = (Platform) temp.gameObjectProperty().get();
+                    Platform platformObject = (Platform) tempSprite.gameObjectProperty().get();
+                    Image img = null;
+                    try {
+                        switch (main.getSelectedWorld()){
+                            case 1:
+                                img = new Image(new FileInputStream("ressources/game/platforms/platform1.png"));
+                                break;
+                            case 2:
+                                img = new Image(new FileInputStream("ressources/game/platforms/platform2.png"));
+                                break;
+                            case 3:
+                                img = new Image(new FileInputStream("ressources/game/platforms/platform3.png"));
+                        }
+                    } catch (Exception e) {
 
+                    }
                     if (!platformObject.getClicked()) {
                         note = platformObject.getNote();
                         duration = platformObject.getDuration();
@@ -94,12 +107,13 @@ public class InGameController extends ViewController {
                                 while (player.getFrog().getJumpActive().get() == true) {
 
                                 }
-
                                 soundPlayer.toPlay(note, duration);
+
                             }
                         }).start();
                         main.getGamePlayer().getFrog().getJumpActive().set(true);
                         platformObject.setClicked();
+                        tempSprite.setFill(new ImagePattern(img));
                     }
 
                 } else {

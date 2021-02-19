@@ -70,12 +70,14 @@ public class GameBreakController extends ViewController {
         nextLevel.setDisable(true);
         String newSoundFile = main.getGamePlayer().getCurrentSoundFile();
         int songnumber = Integer.parseInt(newSoundFile.substring((newSoundFile.length() - 5), (newSoundFile.length() - 4)));
+
         if (main.getGamePlayer().getGameState().get() == finishedMode.WON || main.getCurrentLevel() > songnumber) {
-            nextLevel.setDisable(false);
-            if(main.getCurrentLevel() == songnumber-1)
-            main.setCurrentLevel(main.getCurrentLevel() + 1);
+            if (songnumber < 9)
+                nextLevel.setDisable(false);
+            if (main.getCurrentLevel() == songnumber)
+                main.setCurrentLevel(main.getCurrentLevel() + 1);
         }
-        if(main.getGamePlayer().getGameState().get() == finishedMode.WON){
+        if (main.getGamePlayer().getGameState().get() == finishedMode.WON) {
             Image img = null;
             try {
                 img = new Image(new FileInputStream("ressources/game/window/frog_win.png"));
@@ -84,7 +86,7 @@ public class GameBreakController extends ViewController {
             }
             animation.setFill(new ImagePattern(img));
 
-        }else{
+        } else {
             Image img = null;
             try {
                 img = new Image(new FileInputStream("ressources/game/window/frog_loss.png"));
@@ -136,7 +138,7 @@ public class GameBreakController extends ViewController {
 
             if ((songnumber) % 3 == 0)
                 main.setSelectedWorld(main.getSelectedWorld() + 1);
-            main.getGamePlayer().start("songs/song" + (songnumber+1) + ".xml");
+            main.getGamePlayer().start("songs/song" + (songnumber + 1) + ".xml");
         });
 
         levelSelection.addEventHandler(ActionEvent.ACTION, event -> {
@@ -150,7 +152,6 @@ public class GameBreakController extends ViewController {
                                     ((Pane) node).getChildren().remove(platform);
                                 }
                             });
-
                         }
                     }
                 }

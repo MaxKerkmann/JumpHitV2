@@ -68,8 +68,10 @@ public class Frog implements GameObject {
                         y = y - basefrogJumpSpeed * sizemulti;
                 }
             } else {
-                if (currentPlatform.getY() >= baseBirdSaveZone * sizemulti)
+                if (currentPlatform.getY() >= baseBirdSaveZone * sizemulti) {
                     currentPlatform = null;
+                    y = (baseBirdSaveZone-baseOffsetY) * sizemulti;
+                }
                 else {
                     x = currentPlatform.getX() - baseOffsetX * sizemulti;
                     y = currentPlatform.getY() - baseOffsetY * sizemulti;
