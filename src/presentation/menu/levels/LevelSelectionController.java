@@ -139,7 +139,10 @@ public class LevelSelectionController extends ViewController {
 
 		Image img = null;
 		try {
-			img = new Image(new FileInputStream("ressources/menus/LevelMenu/weltenuebersicht_wiese.png"));
+			if(main.getSelectedWorld() ==3)
+				img = new Image(new FileInputStream("ressources/menus/LevelMenu/weltenuebersicht_sternenhimmel.png"));
+			else
+				img = new Image(new FileInputStream("ressources/menus/LevelMenu/weltenuebersicht_wiese.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
